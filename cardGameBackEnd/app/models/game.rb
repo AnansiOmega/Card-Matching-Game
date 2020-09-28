@@ -4,13 +4,7 @@ class Game < ApplicationRecord
     has_many :matches, through: :game_matches
 
 
-
-#     create_table :games do |t|
-#         t.integer :user_id
-#         t.integer :points
-#         t.boolean :completed, default: false
     def self.create_game
-
         new_game = Game.create(user_id: User.last.id)
 
         8.times do 
