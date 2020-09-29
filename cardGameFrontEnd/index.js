@@ -1,4 +1,46 @@
+function signupFormListener() {
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault()
+        
+        const formInfo = {
+        name: e.target[0].value
+        }
+         const resetBox = document.querySelector('.input-text')
+        
+        const reqObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formInfo)
+        }
+
+        fetch('http://localhost:3000/users')
+        .then(resp => resp.json())
+        .then(users => {
+            users.forEach(user => {
+                // get id
+            form.reset()
+            const container =  document.querySelector('#username-display')
+            const userDisplay = `<p> Hello, ${user.username}</p>`
+            // if current users display name
+            //  display new user
+            container.innerHTML = userDisplay
+            })
+            
+        })
+    
+    })
+            
+    
+
+}
+
+
 const cardGameCont = document.getElementById('card-game-container')
+
 const pair1 = document.querySelector('#pair-1')
 const pair2 = document.querySelector('#pair-2')
 const pair3 = document.querySelector('#pair-3')
@@ -7,9 +49,10 @@ const pair5 = document.querySelector('#pair-5')
 const pair6 = document.querySelector('#pair-6')
 const pair7 = document.querySelector('#pair-7')
 const pair8 = document.querySelector('#pair-8')
-
+debugger
 
 function main(){
+    signupFormListener()
     loadNewGame()
 }
 
@@ -18,7 +61,7 @@ cardGameCont.addEventListener('click', eventHandler)
 
 function eventHandler(e){
 if (e.target.parentElement.className === 'word'){
-    debugger
+    
 }
 }
 
