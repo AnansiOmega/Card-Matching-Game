@@ -25,8 +25,10 @@
 
 Match.destroy_all
 User.destroy_all
+Game.destroy_all
+GameMatch.destroy_all
 
-english_word_arr = ['School','Car','Pen','Boat','Dog','Cat','Bird','Fish','Mushroom','Cucumber','Onion','Corn','Meat','Fruit','Water','Juice','Soda','Library','Restuarant','Hospital','Doctor','Nurse','Medicine','Grandparents','Father','Mother','Son','Dauther','Baby','Red','Blue','Green','Yellow','Pink','Purple','Cup','Plate','Spoon','Fork','Pot','Oil','Shirt','Pants','Sweater','Socks','Shoes','Body','Head','Legs']
+english_word_arr = ['School','Car','Pen','Boat','Dog','Cat','Bird','Fish','Mushroom','Cucumber','Onion','Corn','Meat','Fruit','Water','Juice','Soda','Library','Restuarant','Hospital','Doctor','Nurse','Medicine','Grandparents','Father','Mother','Son','Daughter','Baby','Red','Blue','Green','Yellow','Pink','Purple','Cup','Plate','Spoon','Fork','Pot','Oil','Shirt','Pants','Sweater','Socks','Shoes','Body','Head','Legs']
 
 spanish_word_arr = ['Escuela','Carro','Pluma','Barco','Perro','Gato','Pajaro','Pez','Hongo','Pepino','Cebolla','Elote','Carne','Fruta','Agua','Jugo','Refresco','Biblioteca','Restaurante','Hospital','Doctor','Enfermera','Medicina','Abuelos','Padre','Madre','Hijo','Hija','Bebé','Rojo','Azul','Verde','Amarillo','Rosa','Morado','Vaso','Plato','Cuchara','Tenedor','Olla','Aceite','Camisa','Pantalones','Suéter','Calcetín','Zapatos','Cuerpo','Cabeza','Piernas']
 
