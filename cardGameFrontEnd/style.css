@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('app/assets/fonts/Montserrat-Medium.otf') format("truetype");
+}
+
+body {
+    font-family: 'Montserrat-Medium';
+    background-color: #c0ffee;
+}
+
+#card-game-container {
+    display: grid;
+    justify-content: center;
+}
+
+#pair-1,
+#pair-3,
+#pair-5,
+#pair-7 {
+    grid-column: 1;
+}
+
+#pair-2,
+#pair-4,
+#pair-6
+#pair-8 {
+    grid-column: 2;
+}
+
+.card1,
+.card2 {
+    text-align: center;
+    border: black;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 172px;
+    height:257px;
+    display: inline-grid;
+    margin: 1rem 1rem;
+  }
+
+#pair-1 > .card1,
+#pair-1 > .card2 {
+    background-color: #eeddff;
+}
+
+#pair-2 > .card1,
+#pair-2 > .card2 {
+    background-color: #ffd6f3;
+}
+
+#pair-3 > .card1,
+#pair-3 > .card2 {
+    background-color: #c0ffee;
+}
+
+#pair-4 > .card1,
+#pair-4 > .card2 {
+    background-color: #bdf2ff;
+}
+
+#pair-5 > .card1,
+#pair-5 > .card2 {
+    background-color: #f7f5bf;
+}
+
+#pair-6 > .card1,
+#pair-6 > .card2 {
+    background-color: #fadbc4;
+}
+
+#pair-7 > .card1,
+#pair-7 > .card2 {
+    background-color: #eeddff;
+}
+
+#pair-8 > .card1,
+#pair-8 > .card2 {
+    background-color: #ffd6f3;
+}
+    
+
+    
