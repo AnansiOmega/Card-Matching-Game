@@ -18,7 +18,7 @@ cardGameCont.addEventListener('click', eventHandler)
 
 function eventHandler(e){
 if (e.target.parentElement.className === 'word'){
-    debugger
+
 }
 }
 
