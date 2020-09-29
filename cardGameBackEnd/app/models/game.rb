@@ -13,7 +13,15 @@ class Game < ApplicationRecord
                 match_id: Match.all.sample.id
             )
         end
-        return new_game && GameMatch.all.slice(-8,8)
+        game_matches = GameMatch.all.slice(-8,8).map(&:match).uniq
+        if game_matches.length != 8
+            GameMatch.all.slice(-8,8).each do |match|
+                match.destroy
+            end
+            new_game.destroy
+            self.create_game
+        end
+        return GameMatch.all.slice(-8,8)
     end
 
 end
