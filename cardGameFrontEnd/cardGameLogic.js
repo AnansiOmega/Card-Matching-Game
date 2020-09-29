@@ -1,41 +1,44 @@
 let clicks = 0
 let card1Id = '6'
 let card2Id = '9'
-let card1Color = ""
-let card2Color = ""
+let hiddenCard1 = 'block'
+let hiddenCard2 = 'block'
+
+let matched = false
+
 cardGameCont.addEventListener('click', logicHandler)
-cardGameCont.addEventListener('click', eventHandler)
+cardGameCont.addEventListener('click', cardBehavior)
 
 
 
 
 function logicHandler(e){
     if (e && clicks !== 2){
-        clicks ++ 
+        clicks ++
     } else {
         clicks = 0
+        matched = false
     }
 }
 
-function eventHandler(e){
+function cardBehavior(e){
     if (e.target.parentElement.className === 'card1' || 'card2'){
     switch (clicks) {
         case 1:
-        card1Color = e.target.parentElement.style.backgroundColor = 'red'
+        hiddenCard1 = e.target.parentElement.style.display = 'none'
         card1Id = e.target.parentElement.dataset.matchId
         break;
         case 2:
-        card2Color = e.target.parentElement.style.backgroundColor = 'red' 
+        hiddenCard2 = e.target.parentElement.style.display = 'none'
         card2Id = e.target.parentElement.dataset.matchId
-        setTimeout( ()=> {
+        setTimeout( () => {
             if (card1Id === card2Id){
                 alert('you did it!')
-                card1Color = 'green'
-                debugger
-                card2Color = 'green'
+                matched = true
+                matchedCards(card1Id)
             } else {
                 alert('boo hoo you suck')
-                // e.target.parentElement.style.backgroundColor = ''
+                unmatchedCards(card1Id, card2Id)
             }
         }, 1000)
         break;
@@ -43,10 +46,19 @@ function eventHandler(e){
 }
 }
 
+function matchedCards(card1Id){
+    const allCards1 = document.getElementsByClassName('card1')
+    const allCards2 = document.getElementsByClassName('card2')
+    let allCardsArr1 = Array.from(allCards1)
+    let allCardsArr2 = Array.from(allCards2)
+    let allCardsArr = allCardsArr1.concat(allCardsArr2)
+    let matchedCards = allCardsArr.filter(card => card.dataset.matchId === card1Id)
+    matchedCards.forEach(card => card.style.display = 'block')
+}
 
+function unmatchedCards(card1Id, card2Id){
 
-
-
+}
 
 
 
