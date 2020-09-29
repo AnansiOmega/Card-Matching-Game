@@ -1,0 +1,1152 @@
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200928200334)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200928200334"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGames (20200928200342)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "games" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "points" integer, "completed" boolean DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200928200342"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGameMatches (20200928200348)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "game_matches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "game_id" integer, "match_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200928200348"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMatches (20200928200355)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "matches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "english_word" varchar, "spanish_word" varchar, "img_url" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200928200355"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-09-29 23:38:32.015231"], ["updated_at", "2020-09-29 23:38:32.015231"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[36mGameMatch Load (0.1ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.5ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "School"], ["spanish_word", "Escuela"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.673479"], ["updated_at", "2020-09-29 23:38:39.673479"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Car"], ["spanish_word", "Carro"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.682517"], ["updated_at", "2020-09-29 23:38:39.682517"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Pen"], ["spanish_word", "Pluma"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.692627"], ["updated_at", "2020-09-29 23:38:39.692627"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Boat"], ["spanish_word", "Barco"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.701853"], ["updated_at", "2020-09-29 23:38:39.701853"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Dog"], ["spanish_word", "Perro"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.711254"], ["updated_at", "2020-09-29 23:38:39.711254"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Cat"], ["spanish_word", "Gato"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.719240"], ["updated_at", "2020-09-29 23:38:39.719240"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Bird"], ["spanish_word", "Pajaro"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.737605"], ["updated_at", "2020-09-29 23:38:39.737605"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Fish"], ["spanish_word", "Pez"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.741680"], ["updated_at", "2020-09-29 23:38:39.741680"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Mushroom"], ["spanish_word", "Hongo"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.745603"], ["updated_at", "2020-09-29 23:38:39.745603"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Cucumber"], ["spanish_word", "Pepino"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.749453"], ["updated_at", "2020-09-29 23:38:39.749453"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Onion"], ["spanish_word", "Cebolla"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.753604"], ["updated_at", "2020-09-29 23:38:39.753604"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Corn"], ["spanish_word", "Elote"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.757098"], ["updated_at", "2020-09-29 23:38:39.757098"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Meat"], ["spanish_word", "Carne"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.760412"], ["updated_at", "2020-09-29 23:38:39.760412"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Fruit"], ["spanish_word", "Fruta"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.764494"], ["updated_at", "2020-09-29 23:38:39.764494"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Water"], ["spanish_word", "Agua"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.768823"], ["updated_at", "2020-09-29 23:38:39.768823"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Juice"], ["spanish_word", "Jugo"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.772691"], ["updated_at", "2020-09-29 23:38:39.772691"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Soda"], ["spanish_word", "Refresco"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.776591"], ["updated_at", "2020-09-29 23:38:39.776591"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Library"], ["spanish_word", "Biblioteca"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.780542"], ["updated_at", "2020-09-29 23:38:39.780542"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Restuarant"], ["spanish_word", "Restaurante"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.783822"], ["updated_at", "2020-09-29 23:38:39.783822"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Hospital"], ["spanish_word", "Hospital"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.790234"], ["updated_at", "2020-09-29 23:38:39.790234"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Doctor"], ["spanish_word", "Doctor"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.794618"], ["updated_at", "2020-09-29 23:38:39.794618"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Nurse"], ["spanish_word", "Enfermera"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.799061"], ["updated_at", "2020-09-29 23:38:39.799061"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.2ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Medicine"], ["spanish_word", "Medicina"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.802559"], ["updated_at", "2020-09-29 23:38:39.802559"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Grandparents"], ["spanish_word", "Abuelos"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.805689"], ["updated_at", "2020-09-29 23:38:39.805689"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Father"], ["spanish_word", "Padre"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.808815"], ["updated_at", "2020-09-29 23:38:39.808815"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Mother"], ["spanish_word", "Madre"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.812468"], ["updated_at", "2020-09-29 23:38:39.812468"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Son"], ["spanish_word", "Hijo"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.815760"], ["updated_at", "2020-09-29 23:38:39.815760"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Daughter"], ["spanish_word", "Hija"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.819060"], ["updated_at", "2020-09-29 23:38:39.819060"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Baby"], ["spanish_word", "Bebé"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.822515"], ["updated_at", "2020-09-29 23:38:39.822515"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Red"], ["spanish_word", "Rojo"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.825596"], ["updated_at", "2020-09-29 23:38:39.825596"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Blue"], ["spanish_word", "Azul"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.828713"], ["updated_at", "2020-09-29 23:38:39.828713"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Green"], ["spanish_word", "Verde"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.832629"], ["updated_at", "2020-09-29 23:38:39.832629"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Yellow"], ["spanish_word", "Amarillo"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.836299"], ["updated_at", "2020-09-29 23:38:39.836299"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Pink"], ["spanish_word", "Rosa"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.839500"], ["updated_at", "2020-09-29 23:38:39.839500"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Purple"], ["spanish_word", "Morado"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.842772"], ["updated_at", "2020-09-29 23:38:39.842772"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Cup"], ["spanish_word", "Vaso"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.846693"], ["updated_at", "2020-09-29 23:38:39.846693"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Plate"], ["spanish_word", "Plato"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.850452"], ["updated_at", "2020-09-29 23:38:39.850452"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Spoon"], ["spanish_word", "Cuchara"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.854193"], ["updated_at", "2020-09-29 23:38:39.854193"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Fork"], ["spanish_word", "Tenedor"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.858557"], ["updated_at", "2020-09-29 23:38:39.858557"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Pot"], ["spanish_word", "Olla"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.862707"], ["updated_at", "2020-09-29 23:38:39.862707"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Oil"], ["spanish_word", "Aceite"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.866514"], ["updated_at", "2020-09-29 23:38:39.866514"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Shirt"], ["spanish_word", "Camisa"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.870272"], ["updated_at", "2020-09-29 23:38:39.870272"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Pants"], ["spanish_word", "Pantalones"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.873884"], ["updated_at", "2020-09-29 23:38:39.873884"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Sweater"], ["spanish_word", "Suéter"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.877177"], ["updated_at", "2020-09-29 23:38:39.877177"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Socks"], ["spanish_word", "Calcetín"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.880258"], ["updated_at", "2020-09-29 23:38:39.880258"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.2ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Shoes"], ["spanish_word", "Zapatos"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.883085"], ["updated_at", "2020-09-29 23:38:39.883085"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Body"], ["spanish_word", "Cuerpo"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.903497"], ["updated_at", "2020-09-29 23:38:39.903497"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Head"], ["spanish_word", "Cabeza"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.907115"], ["updated_at", "2020-09-29 23:38:39.907115"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("english_word", "spanish_word", "img_url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["english_word", "Legs"], ["spanish_word", "Piernas"], ["img_url", "Not Available"], ["created_at", "2020-09-29 23:38:39.911615"], ["updated_at", "2020-09-29 23:38:39.911615"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Pepe C. Cola"], ["created_at", "2020-09-29 23:38:40.032598"], ["updated_at", "2020-09-29 23:38:40.032598"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Lynn Guini"], ["created_at", "2020-09-29 23:38:40.036876"], ["updated_at", "2020-09-29 23:38:40.036876"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Beau Vine"], ["created_at", "2020-09-29 23:38:40.040859"], ["updated_at", "2020-09-29 23:38:40.040859"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Stan Dup"], ["created_at", "2020-09-29 23:38:40.044977"], ["updated_at", "2020-09-29 23:38:40.044977"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Mel Loewe"], ["created_at", "2020-09-29 23:38:40.049435"], ["updated_at", "2020-09-29 23:38:40.049435"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Frank N. Beans"], ["created_at", "2020-09-29 23:38:40.053132"], ["updated_at", "2020-09-29 23:38:40.053132"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Adam Baum"], ["created_at", "2020-09-29 23:38:40.058021"], ["updated_at", "2020-09-29 23:38:40.058021"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Winsom Cash"], ["created_at", "2020-09-29 23:38:40.062424"], ["updated_at", "2020-09-29 23:38:40.062424"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Dwayne Pipe"], ["created_at", "2020-09-29 23:38:40.066979"], ["updated_at", "2020-09-29 23:38:40.066979"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Peg Legge"], ["created_at", "2020-09-29 23:38:40.070947"], ["updated_at", "2020-09-29 23:38:40.070947"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/games/new" for ::1 at 2020-09-29 18:38:53 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GamesController#new as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 10], ["created_at", "2020-09-29 23:38:53.825917"], ["updated_at", "2020-09-29 23:38:53.825917"]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.5ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 1], ["match_id", 25], ["created_at", "2020-09-29 23:38:53.856942"], ["updated_at", "2020-09-29 23:38:53.856942"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 1], ["match_id", 48], ["created_at", "2020-09-29 23:38:53.866976"], ["updated_at", "2020-09-29 23:38:53.866976"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.5ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 1], ["match_id", 6], ["created_at", "2020-09-29 23:38:53.879585"], ["updated_at", "2020-09-29 23:38:53.879585"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.6ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 1], ["match_id", 7], ["created_at", "2020-09-29 23:38:53.893473"], ["updated_at", "2020-09-29 23:38:53.893473"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 1], ["match_id", 11], ["created_at", "2020-09-29 23:38:53.918948"], ["updated_at", "2020-09-29 23:38:53.918948"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 1], ["match_id", 8], ["created_at", "2020-09-29 23:38:53.930556"], ["updated_at", "2020-09-29 23:38:53.930556"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 1], ["match_id", 12], ["created_at", "2020-09-29 23:38:53.941850"], ["updated_at", "2020-09-29 23:38:53.941850"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 1], ["match_id", 5], ["created_at", "2020-09-29 23:38:53.952314"], ["updated_at", "2020-09-29 23:38:53.952314"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Load (0.3ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:16:in `create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mCACHE GameMatch Load (0.0ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:24:in `create_game'
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (36.05ms)
+Completed 200 OK in 216ms (Views: 52.0ms | ActiveRecord: 20.8ms | Allocations: 131768)
+
+
+Started GET "/games/new" for ::1 at 2020-09-29 18:39:08 -0500
+Processing by GamesController#new as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 10], ["created_at", "2020-09-29 23:39:08.239056"], ["updated_at", "2020-09-29 23:39:08.239056"]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 2], ["match_id", 30], ["created_at", "2020-09-29 23:39:08.253001"], ["updated_at", "2020-09-29 23:39:08.253001"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 2], ["match_id", 37], ["created_at", "2020-09-29 23:39:08.264668"], ["updated_at", "2020-09-29 23:39:08.264668"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 2], ["match_id", 22], ["created_at", "2020-09-29 23:39:08.284935"], ["updated_at", "2020-09-29 23:39:08.284935"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 2], ["match_id", 4], ["created_at", "2020-09-29 23:39:08.293579"], ["updated_at", "2020-09-29 23:39:08.293579"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 2], ["match_id", 37], ["created_at", "2020-09-29 23:39:08.302960"], ["updated_at", "2020-09-29 23:39:08.302960"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 2], ["match_id", 26], ["created_at", "2020-09-29 23:39:08.310154"], ["updated_at", "2020-09-29 23:39:08.310154"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 2], ["match_id", 40], ["created_at", "2020-09-29 23:39:08.319748"], ["updated_at", "2020-09-29 23:39:08.319748"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 2], ["match_id", 27], ["created_at", "2020-09-29 23:39:08.326957"], ["updated_at", "2020-09-29 23:39:08.326957"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Load (0.1ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:16:in `create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mCACHE GameMatch Load (0.0ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:18:in `create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 9]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 10]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 11]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 12]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 13]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 14]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.4ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 15]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 16]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:21:in `create_game'
+  [1m[36mGame Destroy (0.3ms)[0m  [1m[31mDELETE FROM "games" WHERE "games"."id" = ?[0m  [["id", 2]]
+  ↳ app/models/game.rb:21:in `create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:21:in `create_game'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 10], ["created_at", "2020-09-29 23:39:08.387452"], ["updated_at", "2020-09-29 23:39:08.387452"]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 3], ["match_id", 40], ["created_at", "2020-09-29 23:39:08.399628"], ["updated_at", "2020-09-29 23:39:08.399628"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 3], ["match_id", 8], ["created_at", "2020-09-29 23:39:08.409742"], ["updated_at", "2020-09-29 23:39:08.409742"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 3], ["match_id", 17], ["created_at", "2020-09-29 23:39:08.427927"], ["updated_at", "2020-09-29 23:39:08.427927"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 3], ["match_id", 13], ["created_at", "2020-09-29 23:39:08.439067"], ["updated_at", "2020-09-29 23:39:08.439067"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 3], ["match_id", 30], ["created_at", "2020-09-29 23:39:08.448994"], ["updated_at", "2020-09-29 23:39:08.448994"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 3], ["match_id", 48], ["created_at", "2020-09-29 23:39:08.459987"], ["updated_at", "2020-09-29 23:39:08.459987"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 3], ["match_id", 44], ["created_at", "2020-09-29 23:39:08.471318"], ["updated_at", "2020-09-29 23:39:08.471318"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 3], ["match_id", 16], ["created_at", "2020-09-29 23:39:08.490543"], ["updated_at", "2020-09-29 23:39:08.490543"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Load (0.1ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:16:in `create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mCACHE GameMatch Load (0.0ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:24:in `create_game'
+  [1m[36mCACHE GameMatch Load (0.0ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:24:in `create_game'
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (67.88ms)
+Completed 200 OK in 350ms (Views: 68.7ms | ActiveRecord: 44.8ms | Allocations: 233412)
+
+
+Started GET "/games/new" for ::1 at 2020-09-29 18:39:16 -0500
+Processing by GamesController#new as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Create (0.7ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 10], ["created_at", "2020-09-29 23:39:16.895456"], ["updated_at", "2020-09-29 23:39:16.895456"]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.6ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 4], ["match_id", 49], ["created_at", "2020-09-29 23:39:16.911175"], ["updated_at", "2020-09-29 23:39:16.911175"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.5ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 4], ["match_id", 13], ["created_at", "2020-09-29 23:39:16.929933"], ["updated_at", "2020-09-29 23:39:16.929933"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.5ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 4], ["match_id", 27], ["created_at", "2020-09-29 23:39:16.944696"], ["updated_at", "2020-09-29 23:39:16.944696"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.7ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 4], ["match_id", 42], ["created_at", "2020-09-29 23:39:16.958510"], ["updated_at", "2020-09-29 23:39:16.958510"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.6ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 4], ["match_id", 2], ["created_at", "2020-09-29 23:39:16.972370"], ["updated_at", "2020-09-29 23:39:16.972370"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.6ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 4], ["match_id", 13], ["created_at", "2020-09-29 23:39:16.984640"], ["updated_at", "2020-09-29 23:39:16.984640"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.5ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 4], ["match_id", 15], ["created_at", "2020-09-29 23:39:16.998938"], ["updated_at", "2020-09-29 23:39:16.998938"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.7ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 4], ["match_id", 49], ["created_at", "2020-09-29 23:39:17.026589"], ["updated_at", "2020-09-29 23:39:17.026589"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Load (0.3ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:16:in `create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mCACHE GameMatch Load (0.0ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:18:in `create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 25]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 26]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 27]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 28]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 29]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 30]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 31]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[36mGameMatch Destroy (0.6ms)[0m  [1m[31mDELETE FROM "game_matches" WHERE "game_matches"."id" = ?[0m  [["id", 32]]
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:19:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:21:in `create_game'
+  [1m[36mGame Destroy (0.5ms)[0m  [1m[31mDELETE FROM "games" WHERE "games"."id" = ?[0m  [["id", 4]]
+  ↳ app/models/game.rb:21:in `create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:21:in `create_game'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 10], ["created_at", "2020-09-29 23:39:17.133779"], ["updated_at", "2020-09-29 23:39:17.133779"]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.7ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 5], ["match_id", 34], ["created_at", "2020-09-29 23:39:17.152004"], ["updated_at", "2020-09-29 23:39:17.152004"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.7ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.5ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 5], ["match_id", 27], ["created_at", "2020-09-29 23:39:17.172127"], ["updated_at", "2020-09-29 23:39:17.172127"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 5], ["match_id", 15], ["created_at", "2020-09-29 23:39:17.186717"], ["updated_at", "2020-09-29 23:39:17.186717"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (6.8ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 5], ["match_id", 39], ["created_at", "2020-09-29 23:39:17.207594"], ["updated_at", "2020-09-29 23:39:17.207594"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 5], ["match_id", 14], ["created_at", "2020-09-29 23:39:17.224506"], ["updated_at", "2020-09-29 23:39:17.224506"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.5ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 5], ["match_id", 17], ["created_at", "2020-09-29 23:39:17.239003"], ["updated_at", "2020-09-29 23:39:17.239003"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 5], ["match_id", 28], ["created_at", "2020-09-29 23:39:17.251919"], ["updated_at", "2020-09-29 23:39:17.251919"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 5], ["match_id", 29], ["created_at", "2020-09-29 23:39:17.274687"], ["updated_at", "2020-09-29 23:39:17.274687"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Load (0.2ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:16:in `create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mCACHE GameMatch Load (0.0ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:24:in `create_game'
+  [1m[36mCACHE GameMatch Load (0.0ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:24:in `create_game'
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (84.11ms)
+Completed 200 OK in 493ms (Views: 84.7ms | ActiveRecord: 68.2ms | Allocations: 258113)
+
+
