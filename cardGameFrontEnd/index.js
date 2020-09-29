@@ -9,18 +9,12 @@ const pair7 = document.querySelector('#pair-7')
 const pair8 = document.querySelector('#pair-8')
 
 
+
 function main(){
     loadNewGame()
 }
 
 
-cardGameCont.addEventListener('click', eventHandler)
-
-function eventHandler(e){
-if (e.target.parentElement.className === 'word'){
-    debugger
-}
-}
 
 function loadNewGame(){
     fetch('http://localhost:3000/games/new')
@@ -45,36 +39,36 @@ function placeCards(newGame) {
 
     return (
         pair1.innerHTML = `
-        <div class='card1'><h4>${match1.english_word}</h4></div>
-        <div class='card2'><h4>${match1.spanish_word}</h4></div>
+        <div data-match-id=${match1.id} class='card1'><h4>${match1.english_word}</h4></div>
+        <div data-match-id=${match1.id} class='card2'><h4>${match1.spanish_word}</h4></div>
         `,
         pair2.innerHTML = `
-        <div class='card1'><h4>${match2.english_word}</h4></div>
-        <div class='card2'><h4>${match2.spanish_word}</h4></div>
+        <div data-match-id=${match2.id} class='card1'><h4>${match2.english_word}</h4></div>
+        <div data-match-id=${match2.id} class='card2'><h4>${match2.spanish_word}</h4></div>
         `,
         pair3.innerHTML = `
-        <div class='card1'><h4>${match3.english_word}</h4></div>
-        <div class='card2'><h4>${match3.spanish_word}</h4></div>
+        <div data-match-id=${match3.id} class='card1'><h4>${match3.english_word}</h4></div>
+        <div data-match-id=${match3.id} class='card2'><h4>${match3.spanish_word}</h4></div>
         `,
         pair4.innerHTML = `
-        <div class='card1'><h4>${match4.english_word}</h4></div>
-        <div class='card2'><h4>${match4.spanish_word}</h4></div>
+        <div data-match-id=${match4.id} class='card1'><h4>${match4.english_word}</h4></div>
+        <div data-match-id=${match4.id} class='card2'><h4>${match4.spanish_word}</h4></div>
         `,
         pair5.innerHTML = `
-        <div class='card1'><h4>${match5.english_word}</h4></div>
-        <div class='card2'><h4>${match5.spanish_word}</h4></div>
+        <div data-match-id=${match5.id} class='card1'><h4>${match5.english_word}</h4></div>
+        <div data-match-id=${match5.id} class='card2'><h4>${match5.spanish_word}</h4></div>
         `,
         pair6.innerHTML = `
-        <div class='card1'><h4>${match6.english_word}</h4></div>
-        <div class='card2'><h4>${match6.spanish_word}</h4></div>
+        <div data-match-id=${match6.id} class='card1'><h4>${match6.english_word}</h4></div>
+        <div data-match-id=${match6.id} class='card2'><h4>${match6.spanish_word}</h4></div>
         `,
         pair7.innerHTML = `
-        <div class='card1'><h4>${match7.english_word}</h4></div>
-        <div class='card2'><h4>${match7.spanish_word}</h4></div>
+        <div data-match-id=${match7.id} class='card1'><h4>${match7.english_word}</h4></div>
+        <div data-match-id=${match7.id} class='card2'><h4>${match7.spanish_word}</h4></div>
         `,
         pair8.innerHTML = `
-        <div class='card1'><h4>${match8.english_word}</h4></div>
-        <div class='card2'><h4>${match8.spanish_word}</h4></div>
+        <div data-match-id=${match8.id} class='card1'><h4>${match8.english_word}</h4></div>
+        <div data-match-id=${match8.id} class='card2'><h4>${match8.spanish_word}</h4></div>
         `
     )
 }
