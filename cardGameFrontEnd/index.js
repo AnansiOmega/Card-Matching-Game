@@ -17,15 +17,9 @@ function main(){
 cardGameCont.addEventListener('click', eventHandler)
 
 function eventHandler(e){
-<<<<<<< HEAD
-    if (e.target.parentElement.className === 'word'){
-        
-    }   
-=======
 if (e.target.parentElement.className === 'word'){
     debugger
 }
->>>>>>> a8f012014f457dafbfe7b0235c500fd8ff454358
 }
 
 function loadNewGame(){
@@ -35,17 +29,6 @@ function loadNewGame(){
 }
 
 function renderNewGame(newGame){
-<<<<<<< HEAD
-    const cardGameCont = document.getElementById('card-game-container')
-    newGame.forEach(gameattr => {
-        cardGameCont.innerHTML += `
-        <div class='word'><h4>${gameattr.match.english_word}<h4></div>
-        <div class='word'><h4>${gameattr.match.spanish_word}<h4></div>
-        `
-    })
-}
-
-=======
     placeCards(newGame)
 }
 
@@ -102,7 +85,6 @@ function gameType(type) {
     }
 
 }
->>>>>>> a8f012014f457dafbfe7b0235c500fd8ff454358
 
 
 main()
