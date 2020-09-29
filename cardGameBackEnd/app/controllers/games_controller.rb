@@ -4,5 +4,7 @@ class GamesController < ApplicationController
         new_game = Game.create_game
         render json: new_game
     end
+
+    
     
 end
