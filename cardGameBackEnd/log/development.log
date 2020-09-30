@@ -5112,3 +5112,185 @@ Processing by GamesController#new as */*
 Completed 200 OK in 609ms (Views: 109.4ms | ActiveRecord: 64.7ms | Allocations: 129323)
 
 
+Started GET "/games/new" for ::1 at 2020-09-29 20:05:40 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GamesController#new as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 20], ["created_at", "2020-09-30 01:05:41.064948"], ["updated_at", "2020-09-30 01:05:41.064948"]]
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:8:in `create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 95], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 355], ["match_id", 95], ["created_at", "2020-09-30 01:05:41.084193"], ["updated_at", "2020-09-30 01:05:41.084193"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.7ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 98], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 355], ["match_id", 98], ["created_at", "2020-09-30 01:05:41.100833"], ["updated_at", "2020-09-30 01:05:41.100833"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.8ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 82], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.2ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 355], ["match_id", 82], ["created_at", "2020-09-30 01:05:41.113213"], ["updated_at", "2020-09-30 01:05:41.113213"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.8ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.2ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 355], ["match_id", 54], ["created_at", "2020-09-30 01:05:41.126713"], ["updated_at", "2020-09-30 01:05:41.126713"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.6ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 93], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.2ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 355], ["match_id", 93], ["created_at", "2020-09-30 01:05:41.138594"], ["updated_at", "2020-09-30 01:05:41.138594"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 70], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 355], ["match_id", 70], ["created_at", "2020-09-30 01:05:41.151060"], ["updated_at", "2020-09-30 01:05:41.151060"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 84], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.2ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 355], ["match_id", 84], ["created_at", "2020-09-30 01:05:41.156890"], ["updated_at", "2020-09-30 01:05:41.156890"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/game.rb:12:in `block in create_game'
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/models/game.rb:13:in `block in create_game'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 94], ["LIMIT", 1]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Create (0.2ms)[0m  [1m[32mINSERT INTO "game_matches" ("game_id", "match_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["game_id", 355], ["match_id", 94], ["created_at", "2020-09-30 01:05:41.162366"], ["updated_at", "2020-09-30 01:05:41.162366"]]
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/game.rb:11:in `block in create_game'
+  [1m[36mGameMatch Load (2.1ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:16:in `create_game'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 95], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 98], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 82], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 93], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 70], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 84], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 94], ["LIMIT", 1]]
+  ↳ app/models/game.rb:16:in `map'
+  [1m[36mCACHE GameMatch Load (0.0ms)[0m  [1m[34mSELECT "game_matches".* FROM "game_matches"[0m
+  ↳ app/models/game.rb:24:in `create_game'
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 95], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 98], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 82], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 93], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 70], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 355], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers]   [1m[36mCACHE Match Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 94], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/games_controller.rb:5:in `new'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (19.92ms)
+Completed 200 OK in 197ms (Views: 31.2ms | ActiveRecord: 18.6ms | Allocations: 132238)
+
+

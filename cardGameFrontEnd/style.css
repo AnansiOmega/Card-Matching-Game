@@ -1,6 +1,9 @@
 @font-face {
     font-family: 'Montserrat-Medium';
+
     src: url('/Users/anansi/Development/code/Mod3DickingAround/cardGame/cardGameBackEnd/app/assets/fonts/Montserrat-Medium.otf') format("truetype");
+
+
 }
 
 body {
@@ -25,6 +28,19 @@ body {
 #pair-6
 #pair-8 {
     grid-column: 2;
+}
+
+.card-down {
+    text-align: center;
+    border: black;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 172px;
+    height:257px;
+    display: inline-grid;
+    margin: 1rem 1rem;
+    background-color: white;
 }
 
 .card1,
@@ -79,6 +95,10 @@ body {
 #pair-8 > .card2 {
     background-color: #ffd6f3;
 }
-    
 
+#mint-leaf {
+    max-width: 40%;
+    max-height: auto;
+    margin: auto;
+}
     
