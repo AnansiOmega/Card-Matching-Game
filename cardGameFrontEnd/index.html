@@ -4,28 +4,42 @@
     <meta charset="utf-8" />
     <div>
       <form id="signup-container">
-        <input
-          type="text"
-          name="name"
-          value=""
-          placeholder="Escriba su nombre(Enter name)..."
-          class="input-text"
-          <br>
-          <input
-          type="submit"
-          name="submit"
-          value="Empieze(Start)!"
-          class="submit"
-        />
+        <section id="box">
+          <div class="cover">
+            <img src="/Users/scoutinman/Flatiron/Mod 3 project/Card-Matching-Game/cardGameBackEnd/app/assets/images/Logo Vector.png" alt="App logo, mint leaf">
+            <input
+              type="text"
+              name="name"
+              value=""
+              placeholder="Escriba su nombre(Enter name)"
+              class="input-text"
+            /><br>
+            <input
+              type="submit"
+              name="submit"
+              value="Empieze(Start)!"
+              class="submit"
+              style="font-family:'Montserrat-Medium';"
+            /></div>
+         </section>
       </form>
     </div>
     <title>Card Game</title>
     <script defer type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="username-display"> </div>
-      <h1> Hi </h1>
     <div id="container">
-    <div id="card-game-container"></div>
+        <div id="card-game-container">
+            <div id="pair-1"></div>
+            <div id="pair-2"></div>
+            <div id="pair-3"></div>
+            <div id="pair-4"></div>
+            <div id="pair-5"></div>
+            <div id="pair-6"></div>
+            <div id="pair-7"></div>
+            <div id="pair-8"></div>
+        </div>
+    </div>    
   </body>
 </html>

@@ -49,7 +49,7 @@ const pair5 = document.querySelector('#pair-5')
 const pair6 = document.querySelector('#pair-6')
 const pair7 = document.querySelector('#pair-7')
 const pair8 = document.querySelector('#pair-8')
-debugger
+
 
 function main(){
     signupFormListener()

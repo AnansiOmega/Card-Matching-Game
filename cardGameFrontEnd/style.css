@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Montserrat-Medium';
-    src: url('app/assets/fonts/Montserrat-Medium.otf') format("truetype");
+    src: url('/Users/scoutinman/Flatiron/Mod 3 project/Card-Matching-Game/cardGameBackEnd/app/assets/fonts/Montserrat-Medium.otf') format("truetype");
 }              /* /Users/scoutinman/Flatiron/Mod 3 project/Card-Matching-Game/cardGameBackEnd/app/assets/fonts/Montserrat-Medium.otf */
 
 body {
@@ -81,4 +81,36 @@ body {
 }
     
 
-    
+#box {
+    border: 10px solid #00dab5;
+  background-color: #C0FFEE;
+  border-radius: 15px;
+  height: auto;
+  width: 60%;
+  margin: 190px 60px 60px 80px;
+  padding: 100px;
+  opacity: .9;
+  position: absolute;
+display: block;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.input-text {
+    min-height: 10px;
+    width: 40%;
+    padding: 0.2rem;
+    font-family: 'Montserrat-Medium';
+}
+
+/* div.cover {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    border: 3px solid red;
+} */
