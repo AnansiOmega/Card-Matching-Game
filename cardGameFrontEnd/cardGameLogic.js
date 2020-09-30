@@ -9,38 +9,34 @@ let matched = false
 cardGameCont.addEventListener('click', logicHandler)
 cardGameCont.addEventListener('click', cardBehavior)
 
-
-
-
 function logicHandler(e){
-    if (e && clicks !== 2){
-        clicks ++
-    } else {
-        clicks = 0
-        matched = false
+    if (e.target.parentElement.className === 'card1' || e.target.parentElement.className === 'card2'){
+        if (e && clicks !== 2){
+            clicks ++
+        } else {
+            clicks = 1
+            matched = false
+        }
     }
 }
 
 function cardBehavior(e){
-    if (e.target.parentElement.className === 'card1' || 'card2'){
+    if (e.target.parentElement.className === 'card1' || e.target.parentElement.className === 'card2'){
     switch (clicks) {
         case 1:
-        hiddenCard1 = e.target.parentElement.style.display = 'none'
+        hiddenCard1 = e.target.parentElement.style.backgroundColor = 'red'
+        e.target.parentElement.style.pointerEvents = 'none'
         card1Id = e.target.parentElement.dataset.matchId
         break;
         case 2:
-        hiddenCard2 = e.target.parentElement.style.display = 'none'
+        hiddenCard2 = e.target.parentElement.style.backgroundColor = 'red'
+        e.target.parentElement.style.pointerEvents = 'none'
         card2Id = e.target.parentElement.dataset.matchId
-        setTimeout( () => {
             if (card1Id === card2Id){
-                alert('you did it!')
-                matched = true
                 matchedCards(card1Id)
             } else {
-                alert('boo hoo you suck')
                 unmatchedCards(card1Id, card2Id)
             }
-        }, 1000)
         break;
     }
 }
@@ -53,11 +49,24 @@ function matchedCards(card1Id){
     let allCardsArr2 = Array.from(allCards2)
     let allCardsArr = allCardsArr1.concat(allCardsArr2)
     let matchedCards = allCardsArr.filter(card => card.dataset.matchId === card1Id)
-    matchedCards.forEach(card => card.style.display = 'block')
+    matchedCards.forEach(card => {
+        card.style.pointerEvents = 'none'
+        card.style.backgroundColor = 'green'
+    })
 }
 
 function unmatchedCards(card1Id, card2Id){
-
+    const allCards1 = document.getElementsByClassName('card1')
+    const allCards2 = document.getElementsByClassName('card2')
+    let allCardsArr1 = Array.from(allCards1)
+    let allCardsArr2 = Array.from(allCards2)
+    let matchedCards1 = allCardsArr1.filter(card => card.dataset.matchId === card1Id)
+    let matchedCards2 = allCardsArr2.filter(card => card.dataset.matchId === card2Id)
+    let matchedCards = matchedCards1.concat(matchedCards2)
+    // debugger
+    matchedCards.forEach(card => {
+        card.style.pointerEvents = 'auto'
+        card.style.backgroundColor = ''})
 }
 
 
