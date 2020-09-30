@@ -1,6 +1,9 @@
 @font-face {
     font-family: 'Montserrat-Medium';
-    src: url('/Users/matthewsteele/Development/code/Mod3/Project/Card-Matching-Game/cardGameFrontEnd/style.css') format("truetype");
+
+    src: url('/Users/anansi/Development/code/Mod3DickingAround/cardGame/cardGameBackEnd/app/assets/fonts/Montserrat-Medium.otf') format("truetype");
+
+
 }
 
 body {
