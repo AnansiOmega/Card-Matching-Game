@@ -11,7 +11,8 @@ const pair6 = document.querySelector('#pair-6')
 const pair7 = document.querySelector('#pair-7')
 const pair8 = document.querySelector('#pair-8')
 
-pair1.addEventListener('click', toggleCardsDown)
+
+// pair1.addEventListener('click', toggleCardsDown)
 
 
 
@@ -29,6 +30,7 @@ function loadNewGame(){
 
 function renderNewGame(newGame){
     placeCards(newGame)
+    // toggleCardsDown()
     toggleCardsUp()
 }
 
@@ -41,65 +43,79 @@ function placeCards(newGame) {
     const match6 = newGame[5].match
     const match7 = newGame[6].match
     const match8 = newGame[7].match
+    // const pairs = [
+    //     {pair: pair1, match: match1},
+    //     {pair: pair1, match: match1},
+    //     {pair: pair1, match: match1},
+    //     {pair: pair1, match: match1}
+    // ]......
 
-
+    //     pairs.forEach(pairObj => {
+    //         pairObj.pair.innerHTML += 
+    //         `<div class='card-down cd'>${renderMintLeaf()}</div>
+    //         <div data-match-id=${match1.id} data-matched=false class='card1'><h4>${match1.english_word}</h4></div>
+    
+    //         <div class='card-down cd'>${renderMintLeaf()}</div>
+    //         <div data-match-id=${match1.id} data-matched=false class='card2'><h4>${match1.spanish_word}</h4></div>
+    //         `
+    //     })
     return (
         pair1.innerHTML = `
 
-        <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match1.id} class='card1'><h4>${match1.english_word}</h4></div>
+        <div class="card-down">${renderMintLeaf()}</div>
+        <div data-color='#eeddff' data-match-id=${match1.id} data-matched=false class='card1'><h4>${match1.english_word}</h4></div>
 
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match1.id} class='card2'><h4>${match1.spanish_word}</h4></div>
+        <div data-color='#eeddff' data-match-id=${match1.id} data-matched=false class='card2'><h4>${match1.spanish_word}</h4></div>
         `,
         pair2.innerHTML = `
         <div  class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match2.id} class='card1'><h4>${match2.english_word}</h4></div>
+        <div data-color='#ffd6f3' data-match-id=${match2.id} data-matched=false class='card1'><h4>${match2.english_word}</h4></div>
         
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match2.id} class='card2'><h4>${match2.spanish_word}</h4></div>
+        <div data-color='#ffd6f3' data-match-id=${match2.id} data-matched=false class='card2'><h4>${match2.spanish_word}</h4></div>
         `,
         pair3.innerHTML = `
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match3.id} class='card1'><h4>${match3.english_word}</h4></div>
+        <div data-color='#c0ffee' data-match-id=${match3.id} data-matched=false class='card1'><h4>${match3.english_word}</h4></div>
         
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match3.id} class='card2'><h4>${match3.spanish_word}</h4></div>
+        <div data-color='#c0ffee' data-match-id=${match3.id} data-matched=false class='card2'><h4>${match3.spanish_word}</h4></div>
         `,
         pair4.innerHTML = `
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match4.id} class='card1'><h4>${match4.english_word}</h4></div>
+        <div data-color='#bdf2ff' data-match-id=${match4.id} data-matched=false class='card1'><h4>${match4.english_word}</h4></div>
         
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match4.id} class='card2'><h4>${match4.spanish_word}</h4></div>
+        <div data-color='#bdf2ff' data-match-id=${match4.id} data-matched=false class='card2'><h4>${match4.spanish_word}</h4></div>
         `,
         pair5.innerHTML = `
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match5.id} class='card1'><h4>${match5.english_word}</h4></div>
+        <div data-color='#f7f5bf' data-match-id=${match5.id} data-matched=false class='card1'><h4>${match5.english_word}</h4></div>
         
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match5.id} class='card2'><h4>${match5.spanish_word}</h4></div>
+        <div data-color='#f7f5bf' data-match-id=${match5.id} data-matched=false class='card2'><h4>${match5.spanish_word}</h4></div>
         `,
         pair6.innerHTML = `
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match6.id} class='card1'><h4>${match6.english_word}</h4></div>
+        <div data-color='#fadbc4' data-match-id=${match6.id} data-matched=false class='card1'><h4>${match6.english_word}</h4></div>
         
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match6.id} class='card2'><h4>${match6.spanish_word}</h4></div>
+        <div data-color='#fadbc4' data-match-id=${match6.id} data-matched=false class='card2'><h4>${match6.spanish_word}</h4></div>
         `,
         pair7.innerHTML = `
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match7.id} class='card1'><h4>${match7.english_word}</h4></div>
+        <div data-color='#eeddff' data-match-id=${match7.id} data-matched=false class='card1'><h4>${match7.english_word}</h4></div>
         
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match7.id} class='card2'><h4>${match7.spanish_word}</h4></div>
+        <div data-color='#eeddff' data-match-id=${match7.id} data-matched=false class='card2'><h4>${match7.spanish_word}</h4></div>
         `,
         pair8.innerHTML = `
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match8.id} class='card1'><h4>${match8.english_word}</h4></div>
+        <div data-color='#ffd6f3' data-match-id=${match8.id} data-matched=false class='card1'><h4>${match8.english_word}</h4></div>
         
         <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match8.id} class='card2'><h4>${match8.spanish_word}</h4></div>
+        <div data-color='#ffd6f3' data-match-id=${match8.id} data-matched=false class='card2'><h4>${match8.spanish_word}</h4></div>
         `
     )
 }
@@ -137,7 +153,7 @@ function toggleCardsDown() {
 
 function renderMintLeaf() {
  return `
- <img id='mint-leaf' src="/Users/matthewsteele/Development/code/Mod3/Project/Card-Matching-Game/cardGameBackEnd/app/assets/images/mintleaf.png">
+ <img id='mint-leaf' src="/Users/anansi/Development/code/Mod3DickingAround/cardGame/cardGameBackEnd/app/assets/images/mintleaf.png">
  `
 }
 
