@@ -1,7 +1,19 @@
+//switches
+let flipClick = false;
+
+//variables
 const cardGameCont = document.getElementById('card-game-container')
+
+//buttons
+const flipButton = document.querySelector('#flip-cards-button')
+const newGameButton = document.querySelector('#new-game-button')
+
+//card.groups
 const cards1 = document.getElementsByClassName('card1')
 const cards2 = document.getElementsByClassName('card2')
 const cardsDown = document.getElementsByClassName('card-down')
+
+//card.pairs
 const pair1 = document.querySelector('#pair-1')
 const pair2 = document.querySelector('#pair-2')
 const pair3 = document.querySelector('#pair-3')
@@ -11,16 +23,25 @@ const pair6 = document.querySelector('#pair-6')
 const pair7 = document.querySelector('#pair-7')
 const pair8 = document.querySelector('#pair-8')
 
-pair1.addEventListener('click', toggleCardsDown)
-
-
-
+//invoked.functions
 function main(){
     loadNewGame()
 }
+main()
 
+//event.listeners
+flipButton.addEventListener('click', () => {
+        flipClick = !flipClick;
+        if (flipClick) {
+            toggleCardsDown()
+        } else {
+            toggleCardsUp()
+        }
+    });
 
+newGameButton.addEventListener('click', loadNewGame)
 
+//main.functions
 function loadNewGame(){
     fetch('http://localhost:3000/games/new')
     .then(resp => resp.json())
@@ -42,10 +63,8 @@ function placeCards(newGame) {
     const match7 = newGame[6].match
     const match8 = newGame[7].match
 
-
     return (
         pair1.innerHTML = `
-
         <div class='card-down'>${renderMintLeaf()}</div>
         <div data-match-id=${match1.id} class='card1'><h4>${match1.english_word}</h4></div>
 
@@ -104,13 +123,6 @@ function placeCards(newGame) {
     )
 }
 
-function gameType(type) {
-    if (type = 'englishspanish') {
-        englishSpanishGame(type)
-    }
-
-}
-
 function toggleCardsUp() {
     [...cards1].forEach(card => {
         card.style.display = '';
@@ -137,9 +149,6 @@ function toggleCardsDown() {
 
 function renderMintLeaf() {
  return `
- <img id='mint-leaf' src="/Users/matthewsteele/Development/code/Mod3/Project/Card-Matching-Game/cardGameBackEnd/app/assets/images/mintleaf.png">
+ <img id='mint-leaf' src="../cardGameBackEnd/app/assets/images/mintleaf.png">
  `
 }
-
-
-main()
