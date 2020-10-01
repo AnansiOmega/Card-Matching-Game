@@ -14,64 +14,30 @@ function signupFormListener() {
         const reqObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Content-Type': 'application/json'     
             },
             body: JSON.stringify(formInfo)
-        }
-         
-
+        }        
+        
         fetch('http://localhost:3000/users', reqObj)
         .then(resp => resp.json())
-        .then(users => { console.log(users)
-        
-            // const container =  document.querySelector('.username-display')
-            //  const userDisplay = `<p> Hello, ${formInfo}</p>`
-              // if current users display name
-          //  display new user
-            //   container.innerHTML = userDisplay
+        .then(users => {
+            const today = document.querySelector('#box1')
+            today.parentNode.removeChild(today)
+            //document.querySelector('.username-display')
+             
+            const container = document.querySelector('#box2')
+             const userDisplay = `<p> Hola, ${formInfo.username}</p>`
+             
+              container.innerHTML = userDisplay
+
             form.reset()
 
+            
         })
     })
 }   
-    function removeElement()
-//     const form = document.querySelector('form')
-        
-//     form.addEventListener('submit', function(e){
-//         e.preventDefault()
-        
-//         const formInfo = {
-//         name: e.target[0].value
-//         }
-        
-//          const resetBox = document.querySelector('.input-text')
-        
-//         const reqObj = {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(formInfo)
-//         }
-//         debugger
 
-//         // fetch('http://localhost:3000/users')
-//         // .then(resp => resp.json())
-//         // .then(users => {
-//         //     users.forEach(user => {
-//         //         // get id
-//         //     form.reset()
-//         //     const container =  document.querySelector('#username-display')
-//         //     const userDisplay = `<p> Hello, ${user.username}</p>`
-//         //     // if current users display name
-//         //     //  display new user
-//         //     container.innerHTML = userDisplay
-//         //     })
-            
-//         // })
-    
-//     })
             
     
 
@@ -147,27 +113,27 @@ function placeCards(newGame) {
     const match7 = newGame[6].match
     const match8 = newGame[7].match
 
-    return (
-        pair1.innerHTML = `
-        <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match1.id} class='card1'><h4>${match1.english_word}</h4></div>
+    // return (
+    //     pair1.innerHTML = `
+    //     <div class='card-down'>${renderMintLeaf()}</div>
+    //     <div data-match-id=${match1.id} class='card1'><h4>${match1.english_word}</h4></div>
 
-    // const pairs = [
-    //     {pair: pair1, match: match1},
-    //     {pair: pair1, match: match1},
-    //     {pair: pair1, match: match1},
-    //     {pair: pair1, match: match1}
-    // ]......
+    // // const pairs = [
+    // //     {pair: pair1, match: match1},
+    // //     {pair: pair1, match: match1},
+    // //     {pair: pair1, match: match1},
+    // //     {pair: pair1, match: match1}
+    // // ]......
 
-    //     pairs.forEach(pairObj => {
-    //         pairObj.pair.innerHTML += 
-    //         `<div class='card-down cd'>${renderMintLeaf()}</div>
-    //         <div data-match-id=${match1.id} data-matched=false class='card1'><h4>${match1.english_word}</h4></div>
+    // //     pairs.forEach(pairObj => {
+    // //         pairObj.pair.innerHTML += 
+    // //         `<div class='card-down cd'>${renderMintLeaf()}</div>
+    // //         <div data-match-id=${match1.id} data-matched=false class='card1'><h4>${match1.english_word}</h4></div>
     
-    //         <div class='card-down cd'>${renderMintLeaf()}</div>
-    //         <div data-match-id=${match1.id} data-matched=false class='card2'><h4>${match1.spanish_word}</h4></div>
-    //         `
-    //     })
+    // //         <div class='card-down cd'>${renderMintLeaf()}</div>
+    // //         <div data-match-id=${match1.id} data-matched=false class='card2'><h4>${match1.spanish_word}</h4></div>
+    // //         `
+    // //     })
 
     return (
         pair1.innerHTML = `

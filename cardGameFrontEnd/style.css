@@ -94,7 +94,7 @@ body {
     background-color: #ffd6f3;
 }
 
-#box {
+#box1 {
     border: 10px solid #00dab5;
   background-color: #C0FFEE;
   
@@ -126,6 +126,14 @@ img {
 #signup-container {
     margin: auto;
     text-align: center;
+}
+#box2 {
+    border: 10px solid #00dab5;
+    background-color: #C0FFEE;
+    border-radius: 15px;
+    margin: auto;
+    /* position: absolute; */
+
 }
 #mint-leaf {
     max-width: 40%;
