@@ -15,18 +15,23 @@ body {
 }
 
 #pair-1,
-#pair-3,
-#pair-5,
+#pair-4,
 #pair-7 {
     grid-column: 1;
 }
 
 #pair-2,
-#pair-4,
-#pair-6
+#pair-5,
 #pair-8 {
     grid-column: 2;
 }
+
+#pair-3,
+#pair-6,
+#pair-9 {
+    grid-column: 3;
+}
+
 
 .card-down {
     text-align: center;
@@ -39,6 +44,13 @@ body {
     display: inline-grid;
     margin: 1rem 1rem;
     background-color: white;
+    box-shadow: 0px 1px 25px 0px rgba(0, 0, 0, 0.17);
+    transition: box-shadow 0.1s, transform 0.1s;
+}
+
+.card-down:hover {
+    box-shadow: 0px 0px 30px rgba(0,0,0, 0.6);
+    cursor: pointer;
 }
 
 .card1,
@@ -52,7 +64,17 @@ body {
     height:257px;
     display: inline-grid;
     margin: 1rem 1rem;
+    box-shadow: 0px 1px 25px 0px rgba(0, 0, 0, 0.17);
+    transition: box-shadow 0.1s, transform 0.1s;
+    /* backface-visibility: hidden; */
+    /* transform-style: preserve-3d; */
   }
+
+.card1:hover,
+.card2:hover {
+    box-shadow: 0px 0px 30px rgba(0,0,0, 0.6);
+    cursor: pointer;
+}  
 
 #pair-1 > .card1,
 #pair-1 > .card2 {
@@ -66,32 +88,37 @@ body {
 
 #pair-3 > .card1,
 #pair-3 > .card2 {
-    background-color: #c0ffee;
+    background-color: #eeddff;
 }
 
 #pair-4 > .card1,
 #pair-4 > .card2 {
-    background-color: #bdf2ff;
+    background-color: #c0ffee;
 }
 
 #pair-5 > .card1,
 #pair-5 > .card2 {
-    background-color: #f7f5bf;
+    background-color: #bdf2ff;
 }
 
 #pair-6 > .card1,
 #pair-6 > .card2 {
-    background-color: #fadbc4;
+    background-color: #c0ffee;
 }
 
 #pair-7 > .card1,
 #pair-7 > .card2 {
-    background-color: #eeddff;
+    background-color: #f7f5bf;
 }
 
 #pair-8 > .card1,
 #pair-8 > .card2 {
-    background-color: #ffd6f3;
+    background-color: #fadbc4;
+}
+
+#pair-9 > .card1,
+#pair-9 > .card2 {
+    background-color: #f7f5bf;
 }
 
 #mint-leaf {
@@ -106,7 +133,7 @@ body {
 }
 
 #hint-button,
-#flip-cards-button,
+#shuffle-btn,
 #new-game-button {
     max-width: 6%;
     max-height: auto;
@@ -118,11 +145,11 @@ body {
 }
 
 #hint-button:hover,
-#flip-cards-button:hover,
+#shuffle-btn:hover,
 #new-game-button:hover {
     position: static;
-    max-width: 5.5%;
-    max-height: auto;
+    /* max-width: 5.5%; */
+    /* max-height: auto; */
     border-radius: 50%;
     background: linear-gradient(145deg, #ade6d6, #cdffff);
     box-shadow:  10px 10px 20px #a3d9ca, 

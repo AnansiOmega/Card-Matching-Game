@@ -112,7 +112,7 @@ function unmatchedCards(){
 function cardCounter(){
     let allCardsArr = grabAllCards()
     let matchedCards = allCardsArr.filter(card => card.dataset.matched === 'true')
-    if (matchedCards.length === 16){
+    if (matchedCards.length === 18){
         setTimeout( () => {
             alert(`You won the video game it only took you ${moves} moves`)
         }, 500)
