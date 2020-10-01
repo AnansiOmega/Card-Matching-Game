@@ -1,42 +1,81 @@
 function signupFormListener() {
-    const form = document.querySelector('form')
-
+    
+ const form = document.querySelector('form')
+ 
+        
     form.addEventListener('submit', function(e){
         e.preventDefault()
         
+        
         const formInfo = {
-        name: e.target[0].value
+        username: e.target[0].value
         }
-         const resetBox = document.querySelector('.input-text')
         
         const reqObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(formInfo)
         }
+         
 
-        fetch('http://localhost:3000/users')
+        fetch('http://localhost:3000/users', reqObj)
         .then(resp => resp.json())
-        .then(users => {
-            users.forEach(user => {
-                // get id
+        .then(users => { console.log(users)
+        
+            // const container =  document.querySelector('.username-display')
+            //  const userDisplay = `<p> Hello, ${formInfo}</p>`
+              // if current users display name
+          //  display new user
+            //   container.innerHTML = userDisplay
             form.reset()
-            const container =  document.querySelector('#username-display')
-            const userDisplay = `<p> Hello, ${user.username}</p>`
-            // if current users display name
-            //  display new user
-            container.innerHTML = userDisplay
-            })
-            
+
         })
-    
     })
+}   
+    function removeElement()
+//     const form = document.querySelector('form')
+        
+//     form.addEventListener('submit', function(e){
+//         e.preventDefault()
+        
+//         const formInfo = {
+//         name: e.target[0].value
+//         }
+        
+//          const resetBox = document.querySelector('.input-text')
+        
+//         const reqObj = {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(formInfo)
+//         }
+//         debugger
+
+//         // fetch('http://localhost:3000/users')
+//         // .then(resp => resp.json())
+//         // .then(users => {
+//         //     users.forEach(user => {
+//         //         // get id
+//         //     form.reset()
+//         //     const container =  document.querySelector('#username-display')
+//         //     const userDisplay = `<p> Hello, ${user.username}</p>`
+//         //     // if current users display name
+//         //     //  display new user
+//         //     container.innerHTML = userDisplay
+//         //     })
+            
+//         // })
+    
+//     })
             
     
 
-}
+
 
 
 // const cardGameCont = document.getElementById('card-game-container')
@@ -187,7 +226,8 @@ function toggleCardsDown() {
 
 function renderMintLeaf() {
  return `
- <img id='mint-leaf' src="/Users/matthewsteele/Development/code/Mod3/Project/Card-Matching-Game/cardGameBackEnd/app/assets/images/mintleaf.png">
+ <img id='mint-leaf' src="/Users/scoutinman/Flatiron/Mod 3 project/Card-Matching-Game/cardGameBackEnd/app/assets/images/mintleaf.png
+ ">
  `
 }
 
