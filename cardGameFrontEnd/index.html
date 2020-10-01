@@ -2,6 +2,28 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
+    <div>
+        <section id="box1" >
+          <div>
+            <img src="/Users/scoutinman/Flatiron/Mod 3 project/Card-Matching-Game/cardGameBackEnd/app/assets/images/Logo Vector.png" alt="App logo, mint leaf">
+            <form id="signup-container">
+            <input
+              type="text"
+              name="name"
+              value=""
+              placeholder="Escriba su nombre(Enter name)"
+              class="input-text"
+            /><br>
+            <input
+              type="submit"
+              name="submit"
+              value="Empieze(Start)!"
+              class="submit"
+              style="font-family:'Montserrat-Medium';"
+            /></form>
+          </div>
+         </section>
+    </div>
     <title>Card Game</title>
     <script defer type="text/javascript" src="index.js"></script>
     <script defer type="text/javascript" src="cardGameLogic.js"></script>
@@ -9,7 +31,10 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-      <div class='buttons'>
+      <section id="box2"class='username-display'></section>
+
+      
+      <div class='buttons' >
         <img id='new-game-button' src="../cardGameFrontEnd/images/new-game-button.png">
         <img id='hint-button' src="../cardGameFrontEnd/images/hint-button.png">
         <img id='shuffle-btn' src="../cardGameFrontEnd/images/flip-cards-button.png">

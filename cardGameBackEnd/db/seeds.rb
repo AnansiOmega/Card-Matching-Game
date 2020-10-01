@@ -22,7 +22,7 @@
 #                   t.string :english_word
 #                   t.string :spanish_word
 #                   t.string :img_url
-
+puts "destroying...💥"
 Match.destroy_all
 User.destroy_all
 Game.destroy_all
@@ -32,7 +32,7 @@ english_word_arr = ['School','Car','Pen','Boat','Dog','Cat','Bird','Fish','Mushr
 
 spanish_word_arr = ['Escuela','Carro','Pluma','Barco','Perro','Gato','Pajaro','Pez','Hongo','Pepino','Cebolla','Elote','Carne','Fruta','Agua','Jugo','Refresco','Biblioteca','Restaurante','Hospital','Doctor','Enfermera','Medicina','Abuelos','Padre','Madre','Hijo','Hija','Bebé','Rojo','Azul','Verde','Amarillo','Rosa','Morado','Vaso','Plato','Cuchara','Tenedor','Olla','Aceite','Camisa','Pantalones','Suéter','Calcetín','Zapatos','Cuerpo','Cabeza','Piernas']
 
-
+puts "Seeding words...🖍"
 english_word_arr.zip(spanish_word_arr).each do |english_word, spanish_word|
     Match.create(
         spanish_word: spanish_word,
@@ -42,12 +42,12 @@ english_word_arr.zip(spanish_word_arr).each do |english_word, spanish_word|
 
  
 end
-
+puts "Seeding User...👨‍💻"
 10.times do 
     User.create(username: Faker::FunnyName.name)
 
 end
-
+puts "Done...🥳"
 
 
 
