@@ -1,3 +1,51 @@
+function signupFormListener() {
+    
+ const form = document.querySelector('form')
+ 
+        
+    form.addEventListener('submit', function(e){
+        e.preventDefault()
+        
+        
+        const formInfo = {
+        username: e.target[0].value
+        }
+        
+        const reqObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'     
+            },
+            body: JSON.stringify(formInfo)
+        }        
+        
+        fetch('http://localhost:3000/users', reqObj)
+        .then(resp => resp.json())
+        .then(users => {
+            const today = document.querySelector('#box1')
+            today.parentNode.removeChild(today)
+            //document.querySelector('.username-display')
+             
+            const container = document.querySelector('#box2')
+             const userDisplay = `<p> Hola, ${formInfo.username}</p>`
+             
+              container.innerHTML = userDisplay
+
+            form.reset()
+
+            
+        })
+    })
+}   
+
+            
+    
+
+
+
+
+// const cardGameCont = document.getElementById('card-game-container')
+
 //switches
 // let flipClick = false;
 
@@ -26,6 +74,7 @@ const pair9 = document.querySelector('#pair-9')
 
 //invoked.functions
 function main(){
+    signupFormListener()
     loadNewGame()
 }
 main()
@@ -77,10 +126,10 @@ function placeCards(newGame) {
     //         `<div class='card-down cd'>${renderMintLeaf()}</div>
     //         <div data-match-id=${match1.id} data-matched=false class='card1'><h4>${match1.english_word}</h4></div>
     
-    //         <div class='card-down cd'>${renderMintLeaf()}</div>
-    //         <div data-match-id=${match1.id} data-matched=false class='card2'><h4>${match1.spanish_word}</h4></div>
-    //         `
-    //     })
+    // //         <div class='card-down cd'>${renderMintLeaf()}</div>
+    // //         <div data-match-id=${match1.id} data-matched=false class='card2'><h4>${match1.spanish_word}</h4></div>
+    // //         `
+    // //     })
 
         pair1.innerHTML = `
         <div class="card-down">${renderMintLeaf()}</div>
