@@ -7,21 +7,21 @@ class Game < ApplicationRecord
     def self.create_game
         new_game = Game.create(user_id: User.last.id)
 
-        8.times do 
+        9.times do 
             GameMatch.create(
                 game_id: Game.last.id,
                 match_id: Match.all.sample.id
             )
         end
-        game_matches = GameMatch.all.slice(-8,8).map(&:match).uniq
-        if game_matches.length != 8
-            GameMatch.all.slice(-8,8).each do |match|
+        game_matches = GameMatch.all.slice(-9,9).map(&:match).uniq
+        if game_matches.length != 9
+            GameMatch.all.slice(-9,9).each do |match|
                 match.destroy
             end
             new_game.destroy
             self.create_game
         end
-        return GameMatch.all.slice(-8,8)
+        return GameMatch.all.slice(-9,9)
     end
 
 end
