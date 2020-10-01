@@ -15,7 +15,6 @@ function animations() {
         });
         [...cardsDown].forEach(card => {
             animateCard(card)
-            // flipCard(card)
         })
     }
 
@@ -52,6 +51,7 @@ function animations() {
     function flipCard(card) {
         card.addEventListener('click', function() {
             card.style.transform = 'rotateX(0) rotateY(180deg)'
+            card.style.backfaceVisibility = 'hidden'
         })
     }
 }

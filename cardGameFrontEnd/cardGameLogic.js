@@ -1,4 +1,8 @@
 const shuffleBtn = document.getElementById('shuffle-btn')
+const leafPopup = document.querySelector('.leaf-popup')
+
+// document.addEventListener('click', renderPopup)
+
 let clicks = 0
 let moves = 0
 let card1Id = ''
@@ -8,6 +12,24 @@ cardGameCont.addEventListener('click', matchHandler)
 cardGameCont.addEventListener('click', cardBehavior)
 cardGameCont.addEventListener('click', cardCounter)
 shuffleBtn.addEventListener('click', shuffleCards)
+
+function renderPopup() {
+    leafPopup.style.display = 'block'
+    leafPopup.style.animationName = 'flip-vertical-fwd'
+    leafPopup.style.animationDuration = '.4s'
+    setTimeout(floatPopup, 400)
+}
+
+function floatPopup() {
+    // leafPopup.style.display = 'none'
+    leafPopup.style.animationName = 'slide-out-elliptic-top-bck'
+    leafPopup.style.animationDuration = '.7s'
+    setTimeout(hidePopup, 700)
+}
+
+function hidePopup() {
+    leafPopup.style.display = 'none'
+}
 
 
 function matchHandler(e){
@@ -21,8 +43,6 @@ function matchHandler(e){
         moves += .5
     }
 }
-
-
 
 function cardBehavior(e){
     if (e.target.className === 'card-down' || e.target.parentElement.className === 'card-down'){
@@ -67,6 +87,7 @@ function cardBehavior(e){
             setTimeout(() => {
                 if (card1Id === card2Id){
                     matchedCards(card1Id)
+                    renderPopup()
                 } else {
                     unmatchedCards()
                 }
