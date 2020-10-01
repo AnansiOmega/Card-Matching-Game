@@ -1,11 +1,12 @@
 @font-face {
     font-family: 'Montserrat-Medium';
-    src: url('/Users/scoutinman/Flatiron/Mod 3 project/Card-Matching-Game/cardGameBackEnd/app/assets/fonts/Montserrat-Medium.otf') format("truetype");
-}              /* /Users/scoutinman/Flatiron/Mod 3 project/Card-Matching-Game/cardGameBackEnd/app/assets/fonts/Montserrat-Medium.otf */
+    src: url('../cardGameBackEnd/app/assets/fonts/Montserrat-Medium.otf') format("truetype");
+}
 
 body {
     font-family: 'Montserrat-Medium';
     background-color: #c0ffee;
+    text-align: center;
 }
 
 #card-game-container {
@@ -131,4 +132,32 @@ img {
     max-height: auto;
     margin: auto;
 }
-    
+
+.buttons {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#hint-button,
+#flip-cards-button,
+#new-game-button {
+    max-width: 6%;
+    max-height: auto;
+    margin-left: 10px;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #cdffff, #ade6d6);
+    box-shadow:  10px 10px 19px #a3d9ca, 
+                 -10px -10px 19px #ddffff;
+}
+
+#hint-button:hover,
+#flip-cards-button:hover,
+#new-game-button:hover {
+    position: static;
+    max-width: 5.5%;
+    max-height: auto;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ade6d6, #cdffff);
+    box-shadow:  10px 10px 20px #a3d9ca, 
+                 -10px -10px 20px #ddffff;
+}

@@ -27,10 +27,17 @@
     <title>Card Game</title>
     <script defer type="text/javascript" src="index.js"></script>
     <script defer type="text/javascript" src="cardGameLogic.js"></script>
+    <script defer type="text/javascript" src="cardsHover.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+      <div class='buttons'>
+        <img id='new-game-button' src="../cardGameFrontEnd/images/new-game-button.png">
+        <img id='hint-button' src="../cardGameFrontEnd/images/hint-button.png">
+        <img id='flip-cards-button' src="../cardGameFrontEnd/images/flip-cards-button.png">
+      </div>
     <div id="container">
+      <button id='shuffle-btn'>Shuffle</button>
         <div id="card-game-container">
             <div id="pair-1"></div>
             <div id="pair-2"></div>
