@@ -64,11 +64,6 @@ function placeCards(newGame) {
     const match7 = newGame[6].match
     const match8 = newGame[7].match
 
-    return (
-        pair1.innerHTML = `
-        <div class='card-down'>${renderMintLeaf()}</div>
-        <div data-match-id=${match1.id} class='card1'><h4>${match1.english_word}</h4></div>
-
     // const pairs = [
     //     {pair: pair1, match: match1},
     //     {pair: pair1, match: match1},

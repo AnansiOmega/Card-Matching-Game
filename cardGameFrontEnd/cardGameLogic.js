@@ -3,6 +3,7 @@ let clicks = 0
 let moves = 0
 let card1Id = ''
 let card2Id = ''
+let points = 16
 
 cardGameCont.addEventListener('click', matchHandler)
 cardGameCont.addEventListener('click', cardBehavior)
@@ -10,6 +11,9 @@ cardGameCont.addEventListener('click', cardCounter)
 shuffleBtn.addEventListener('click', shuffleCards)
 
 
+function awardPoints(){
+    points = moves * 2
+}
 function matchHandler(e){
     if (e.target.className === 'card-down' || e.target.parentElement.className === 'card-down'){
         if (clicks !== 2){
@@ -133,7 +137,7 @@ function shuffleCards(){
     toggleCardsDown()
 }
 
-// Fisher-Yates shuffle
+// Fisher-Yates shuffle (thank you Mike Bostock)
 function shuffle(array) {
     var m = array.length, t, i;
 
