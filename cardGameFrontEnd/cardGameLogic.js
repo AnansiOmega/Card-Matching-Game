@@ -7,6 +7,7 @@ let clicks = 0
 let moves = 0
 let card1Id = ''
 let card2Id = ''
+let points = 25
 
 cardGameCont.addEventListener('click', matchHandler)
 cardGameCont.addEventListener('click', cardBehavior)
@@ -32,6 +33,7 @@ function hidePopup() {
 }
 
 
+
 function matchHandler(e){
     if (e.target.className === 'card-down' || e.target.parentElement.className === 'card-down'){
         if (clicks !== 2){
@@ -41,57 +43,76 @@ function matchHandler(e){
             matched = false
         }
         moves += .5
+        points -= .5
     }
 }
 
 function cardBehavior(e){
     if (e.target.className === 'card-down' || e.target.parentElement.className === 'card-down'){
-    switch (clicks) {
+        const cardPic = e.target.parentElement
+        const card = e.target
+        switch (clicks) {
         case 1:
-            if (e.target.parentElement.className === 'card-down'){
-                e.target.parentElement.style.display = 'none'
-            } else {
-                e.target.style.display = 'none'
+            if (e.target.className === 'card-down'){
+                flipCard(card)
             }
-            if (e.target.nextElementSibling === null){
-                e.target.parentElement.nextElementSibling.style.display = ''
-                e.target.parentElement.nextElementSibling.style.backgroundColor = 'white'
-            } else {
-                e.target.nextElementSibling.style.display = ''
-                e.target.nextElementSibling.style.backgroundColor = 'white'
+            else{
+                flipCard(cardPic)
             }
-            if (e.target.nextElementSibling === null){
-                card1Id = e.target.parentElement.nextElementSibling.dataset.matchId
+            setTimeout( () => {
+            if (cardPic.className === 'card-down'){
+                cardPic.style.display = 'none'
             } else {
-                card1Id = e.target.nextElementSibling.dataset.matchId
+                card.style.display = 'none'
             }
-        break;
+            if (card.nextElementSibling === null){
+                cardPic.nextElementSibling.style.display = ''
+                cardPic.nextElementSibling.style.backgroundColor = 'white'
+            } else {
+                card.nextElementSibling.style.display = ''
+                card.nextElementSibling.style.backgroundColor = 'white'
+            }
+            if (card.nextElementSibling === null){
+                card1Id = cardPic.nextElementSibling.dataset.matchId
+            } else {
+                card1Id = card.nextElementSibling.dataset.matchId
+            }
+        },50)
+            break;
         case 2:
-            if (e.target.parentElement.className === 'card-down'){
-                e.target.parentElement.style.display = 'none'
-            } else {
-                e.target.style.display = 'none'
+            if (e.target.className === 'card-down'){
+                flipCard(card)
             }
-            if (e.target.nextElementSibling === null){
-                e.target.parentElement.nextElementSibling.style.display = ''
-                e.target.parentElement.nextElementSibling.style.backgroundColor = 'white'
-            } else {
-                e.target.nextElementSibling.style.display = ''
-                e.target.nextElementSibling.style.backgroundColor = 'white'
+            else {
+                flipCard(cardPic)
             }
-            if (e.target.nextElementSibling === null){
-                card2Id = e.target.parentElement.nextElementSibling.dataset.matchId
+            setTimeout( () => {
+            if (cardPic.className === 'card-down'){
+                cardPic.style.display = 'none'
             } else {
-                card2Id = e.target.nextElementSibling.dataset.matchId
+                card.style.display = 'none'
             }
-            setTimeout(() => {
-                if (card1Id === card2Id){
-                    matchedCards(card1Id)
-                    renderPopup()
-                } else {
-                    unmatchedCards()
-                }
-            },1000)
+            if (card.nextElementSibling === null){
+                cardPic.nextElementSibling.style.display = ''
+                cardPic.nextElementSibling.style.backgroundColor = 'white'
+            } else {
+                card.nextElementSibling.style.display = ''
+                card.nextElementSibling.style.backgroundColor = 'white'
+            }
+            if (card.nextElementSibling === null){
+                card2Id = cardPic.nextElementSibling.dataset.matchId
+            } else {
+                card2Id = card.nextElementSibling.dataset.matchId
+            }
+            if (card1Id === card2Id){
+                matchedCards(card1Id)
+                renderPopup()
+            } else {
+                    setTimeout( () => {
+                        unmatchedCards()
+                },500)
+            }
+        },50)
         break;
     }
 }
@@ -123,21 +144,45 @@ function unmatchedCards(){
     let matchedCards1 = allCardsArr1.filter(card => card.style.display === '' && card.dataset.matched === 'false')
     let matchedCards2 = allCardsArr2.filter(card => card.style.display === '' && card.dataset.matched === 'false')
     let matchedCards = matchedCards1.concat(matchedCards2)
-    matchedCards.forEach(card => {
-        card.style.display = "none"
-        card.previousElementSibling.style.display = ''
-        card.style.pointerEvents = 'auto'
-    })
+        matchedCards.forEach(card => {
+            card.style.transform = 'rotateX(0) rotateY(360deg)'
+            setTimeout( () => {
+                card.style.display = "none"
+                card.previousElementSibling.style.display = ''
+                card.style.pointerEvents = 'auto'
+            },50)
+        })
 }
 
 function cardCounter(){
     let allCardsArr = grabAllCards()
     let matchedCards = allCardsArr.filter(card => card.dataset.matched === 'true')
-    if (matchedCards.length === 16){
+    if (matchedCards.length === 18){
+        if (points < 0){
+            points = 1
+        }
         setTimeout( () => {
-            alert(`You won the video game it only took you ${moves} moves`)
+            alert(`You won the video game it only took you ${moves} moves you get ${points} points`)
         }, 500)
+        gameCompleted(allCardsArr)
     }
+}
+
+function gameCompleted(array){
+    let game = JSON.parse(array[0].dataset.gameId)
+    game['points'] = points
+    game['completed'] = true
+
+    let reqObj = {
+        method: "PATCH",
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(game)
+    }
+
+    fetch(`http://localhost:3000/games/${game['id']}`, reqObj)
+    .then(resp => resp.json())
 }
 
 function shuffleCards(){
@@ -154,7 +199,7 @@ function shuffleCards(){
     toggleCardsDown()
 }
 
-// Fisher-Yates shuffle
+// Fisher-Yates shuffle (thank you Mike Bostock)
 function shuffle(array) {
     var m = array.length, t, i;
 
@@ -168,4 +213,11 @@ function shuffle(array) {
     }
   
     return array;
-  }
+}
+
+
+function flipCard(card) {
+    card.style.transform = 'rotateX(0) rotateY(180deg)'
+}
+
+cardCounter()
