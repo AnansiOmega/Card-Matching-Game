@@ -3,7 +3,7 @@ let clicks = 0
 let moves = 0
 let card1Id = ''
 let card2Id = ''
-let points = 16
+let points = 25
 
 cardGameCont.addEventListener('click', matchHandler)
 cardGameCont.addEventListener('click', cardBehavior)
@@ -11,9 +11,7 @@ cardGameCont.addEventListener('click', cardCounter)
 shuffleBtn.addEventListener('click', shuffleCards)
 
 
-function awardPoints(){
-    points = moves * 2
-}
+
 function matchHandler(e){
     if (e.target.className === 'card-down' || e.target.parentElement.className === 'card-down'){
         if (clicks !== 2){
@@ -23,6 +21,7 @@ function matchHandler(e){
             matched = false
         }
         moves += .5
+        points -= .5
     }
 }
 
@@ -31,6 +30,7 @@ function matchHandler(e){
 function cardBehavior(e){
     if (e.target.className === 'card-down' || e.target.parentElement.className === 'card-down'){
     switch (clicks) {
+        
         case 1:
             if (e.target.parentElement.className === 'card-down'){
                 e.target.parentElement.style.display = 'none'
@@ -117,10 +117,18 @@ function cardCounter(){
     let allCardsArr = grabAllCards()
     let matchedCards = allCardsArr.filter(card => card.dataset.matched === 'true')
     if (matchedCards.length === 18){
+        if (points < 0){
+            points = 1
+        }
         setTimeout( () => {
-            alert(`You won the video game it only took you ${moves} moves`)
+            alert(`You won the video game it only took you ${moves} moves you get ${points} points`)
         }, 500)
+        gameCompleted(allCardsArr)
     }
+}
+
+function gameCompleted(array){
+    debugger
 }
 
 function shuffleCards(){
@@ -152,3 +160,9 @@ function shuffle(array) {
   
     return array;
   }
+
+function flipCard(card) {
+card.addEventListener('click', function() {
+    card.style.transform = 'rotateX(0) rotateY(180deg)'
+})
+}
