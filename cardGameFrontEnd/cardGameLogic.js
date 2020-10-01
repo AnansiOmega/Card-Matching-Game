@@ -29,52 +29,55 @@ function matchHandler(e){
 
 function cardBehavior(e){
     if (e.target.className === 'card-down' || e.target.parentElement.className === 'card-down'){
-    switch (clicks) {
-        
+        const cardPic = e.target.parentElement
+        const card = e.target
+        switch (clicks) {
         case 1:
-            if (e.target.parentElement.className === 'card-down'){
-                e.target.parentElement.style.display = 'none'
+            if (cardPic.className === 'card-down'){
+                flipCard(cardPic)
+                cardPic.style.display = 'none'
             } else {
-                e.target.style.display = 'none'
+                flipCard(card)
+                card.style.display = 'none'
             }
-            if (e.target.nextElementSibling === null){
-                e.target.parentElement.nextElementSibling.style.display = ''
-                e.target.parentElement.nextElementSibling.style.backgroundColor = 'white'
+            if (card.nextElementSibling === null){
+                cardPic.nextElementSibling.style.display = ''
+                cardPic.nextElementSibling.style.backgroundColor = 'white'
             } else {
-                e.target.nextElementSibling.style.display = ''
-                e.target.nextElementSibling.style.backgroundColor = 'white'
+                card.nextElementSibling.style.display = ''
+                card.nextElementSibling.style.backgroundColor = 'white'
             }
-            if (e.target.nextElementSibling === null){
-                card1Id = e.target.parentElement.nextElementSibling.dataset.matchId
+            if (card.nextElementSibling === null){
+                card1Id = cardPic.nextElementSibling.dataset.matchId
             } else {
-                card1Id = e.target.nextElementSibling.dataset.matchId
+                card1Id = card.nextElementSibling.dataset.matchId
             }
         break;
         case 2:
-            if (e.target.parentElement.className === 'card-down'){
-                e.target.parentElement.style.display = 'none'
+            if (cardPic.className === 'card-down'){
+                cardPic.style.display = 'none'
             } else {
-                e.target.style.display = 'none'
+                card.style.display = 'none'
             }
-            if (e.target.nextElementSibling === null){
-                e.target.parentElement.nextElementSibling.style.display = ''
-                e.target.parentElement.nextElementSibling.style.backgroundColor = 'white'
+            if (card.nextElementSibling === null){
+                cardPic.nextElementSibling.style.display = ''
+                cardPic.nextElementSibling.style.backgroundColor = 'white'
             } else {
-                e.target.nextElementSibling.style.display = ''
-                e.target.nextElementSibling.style.backgroundColor = 'white'
+                card.nextElementSibling.style.display = ''
+                card.nextElementSibling.style.backgroundColor = 'white'
             }
-            if (e.target.nextElementSibling === null){
-                card2Id = e.target.parentElement.nextElementSibling.dataset.matchId
+            if (card.nextElementSibling === null){
+                card2Id = cardPic.nextElementSibling.dataset.matchId
             } else {
-                card2Id = e.target.nextElementSibling.dataset.matchId
+                card2Id = card.nextElementSibling.dataset.matchId
             }
-            setTimeout(() => {
-                if (card1Id === card2Id){
-                    matchedCards(card1Id)
-                } else {
-                    unmatchedCards()
-                }
-            },1000)
+            if (card1Id === card2Id){
+                matchedCards(card1Id)
+            } else {
+                    setTimeout( () => {
+                        unmatchedCards()
+                },500)
+            }
         break;
     }
 }
@@ -128,7 +131,20 @@ function cardCounter(){
 }
 
 function gameCompleted(array){
-    debugger
+    let game = JSON.parse(array[0].dataset.gameId)
+    game['points'] = points
+    game['completed'] = true
+
+    let reqObj = {
+        method: "PATCH",
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(game)
+    }
+
+    fetch(`http://localhost:3000/games/${game['id']}`, reqObj)
+    .then(resp => resp.json())
 }
 
 function shuffleCards(){
@@ -159,10 +175,13 @@ function shuffle(array) {
     }
   
     return array;
-  }
+}
+
 
 function flipCard(card) {
-card.addEventListener('click', function() {
-    card.style.transform = 'rotateX(0) rotateY(180deg)'
-})
+    card.addEventListener('click', function() {
+        card.style.transform = 'rotateX(0) rotateY(180deg)'
+    })
 }
+
+cardCounter()
