@@ -32,6 +32,11 @@ body {
     grid-column: 3;
 }
 
+/* .test {
+    max-height: 303px;
+} */
+
+
 
 .card-down {
     text-align: center;
@@ -68,6 +73,7 @@ body {
     transition: box-shadow 0.1s, transform 0.1s;
     /* backface-visibility: hidden; */
     /* transform-style: preserve-3d; */
+    vertical-align: top;
   }
 
 .card1:hover,
