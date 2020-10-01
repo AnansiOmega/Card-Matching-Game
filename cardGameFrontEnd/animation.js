@@ -6,11 +6,11 @@ function animations() {
     //animation.functions
     function animateCards() {
         [...cards1].forEach(card => {
-            // animateCard(card)
+            animateCard(card)
             flipCard(card)
         });
         [...cards2].forEach(card => {
-            // animateCard(card)
+            animateCard(card)
             flipCard(card)
         });
         [...cardsDown].forEach(card => {

@@ -33,11 +33,16 @@ function cardBehavior(e){
         const card = e.target
         switch (clicks) {
         case 1:
-            if (cardPic.className === 'card-down'){
+            if (e.target.className === 'card-down'){
+                flipCard(card)
+            }
+            else{
                 flipCard(cardPic)
+            }
+            setTimeout( () => {
+            if (cardPic.className === 'card-down'){
                 cardPic.style.display = 'none'
             } else {
-                flipCard(card)
                 card.style.display = 'none'
             }
             if (card.nextElementSibling === null){
@@ -52,8 +57,16 @@ function cardBehavior(e){
             } else {
                 card1Id = card.nextElementSibling.dataset.matchId
             }
-        break;
+        },50)
+            break;
         case 2:
+            if (e.target.className === 'card-down'){
+                flipCard(card)
+            }
+            else {
+                flipCard(cardPic)
+            }
+            setTimeout( () => {
             if (cardPic.className === 'card-down'){
                 cardPic.style.display = 'none'
             } else {
@@ -78,6 +91,7 @@ function cardBehavior(e){
                         unmatchedCards()
                 },500)
             }
+        },50)
         break;
     }
 }
@@ -109,11 +123,14 @@ function unmatchedCards(){
     let matchedCards1 = allCardsArr1.filter(card => card.style.display === '' && card.dataset.matched === 'false')
     let matchedCards2 = allCardsArr2.filter(card => card.style.display === '' && card.dataset.matched === 'false')
     let matchedCards = matchedCards1.concat(matchedCards2)
-    matchedCards.forEach(card => {
-        card.style.display = "none"
-        card.previousElementSibling.style.display = ''
-        card.style.pointerEvents = 'auto'
-    })
+        matchedCards.forEach(card => {
+            card.style.transform = 'rotateX(0) rotateY(360deg)'
+            setTimeout( () => {
+                card.style.display = "none"
+                card.previousElementSibling.style.display = ''
+                card.style.pointerEvents = 'auto'
+            },50)
+        })
 }
 
 function cardCounter(){
@@ -179,9 +196,7 @@ function shuffle(array) {
 
 
 function flipCard(card) {
-    card.addEventListener('click', function() {
-        card.style.transform = 'rotateX(0) rotateY(180deg)'
-    })
+    card.style.transform = 'rotateX(0) rotateY(180deg)'
 }
 
 cardCounter()
