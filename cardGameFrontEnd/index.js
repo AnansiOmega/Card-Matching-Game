@@ -22,18 +22,17 @@ function signupFormListener() {
         fetch('http://localhost:3000/users', reqObj)
         .then(resp => resp.json())
         .then(users => {
-            const today = document.querySelector('#box1')
-            today.parentNode.removeChild(today)
-            //document.querySelector('.username-display')
-             
+            const login = document.querySelector('#login')
+            login.style.display = 'none'
+
             const container = document.querySelector('#box2')
-             const userDisplay = `<p> Hola, ${formInfo.username}</p>`
+            renderPopup()
+            loadNewGame()
+            const userDisplay = `<p> Hola, ${formInfo.username}</p>`
              
-              container.innerHTML = userDisplay
+            container.innerHTML = userDisplay
 
             form.reset()
-
-            
         })
     })
 }   
@@ -75,7 +74,6 @@ const pair9 = document.querySelector('#pair-9')
 //invoked.functions
 function main(){
     signupFormListener()
-    loadNewGame()
 }
 main()
 
@@ -197,6 +195,31 @@ function placeCards(newGame) {
         animations()
 }
 
+function slamOn() {
+    [...cards1].forEach(card => {
+        card.style.animationPlayState = 'running';
+    });
+    [...cards2].forEach(card => {
+        card.style.animationPlayState = 'running';
+    });
+    [...cardsDown].forEach(card => {
+        card.style.animationPlayState = 'running';
+    })
+    // setTimeout(slamOff, 1000)
+}
+
+function slamOff() {
+    [...cards1].forEach(card => {
+        card.style.animationPlayState = 'paused';
+    });
+    [...cards2].forEach(card => {
+        card.style.animationPlayState = 'paused';
+    });
+    [...cardsDown].forEach(card => {
+        card.style.animationPlayState = 'paused';
+    })
+}
+
 function toggleCardsUp() {
     [...cards1].forEach(card => {
         card.style.display = '';
@@ -207,6 +230,8 @@ function toggleCardsUp() {
     [...cardsDown].forEach(card => {
         card.style.display = 'none';
     })
+    renderPopup()
+    slamOn()
 }
 
 function toggleCardsDown() {

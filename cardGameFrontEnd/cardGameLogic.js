@@ -1,8 +1,6 @@
 const shuffleBtn = document.getElementById('shuffle-btn')
 const leafPopup = document.querySelector('.leaf-popup')
 
-// document.addEventListener('click', renderPopup)
-
 let clicks = 0
 let moves = 0
 let card1Id = ''
@@ -14,6 +12,8 @@ cardGameCont.addEventListener('click', cardBehavior)
 cardGameCont.addEventListener('click', cardCounter)
 shuffleBtn.addEventListener('click', shuffleCards)
 
+
+//leaf.notification
 function renderPopup() {
     leafPopup.style.display = 'block'
     leafPopup.style.animationName = 'flip-vertical-fwd'
@@ -31,7 +31,6 @@ function floatPopup() {
 function hidePopup() {
     leafPopup.style.display = 'none'
 }
-
 
 
 function matchHandler(e){
@@ -66,9 +65,11 @@ function cardBehavior(e){
                 card.style.display = 'none'
             }
             if (card.nextElementSibling === null){
+                cardPic.nextElementSibling.style.animationName = 'none'
                 cardPic.nextElementSibling.style.display = ''
                 cardPic.nextElementSibling.style.backgroundColor = 'white'
             } else {
+                card.nextElementSibling.style.animationName = 'none'
                 card.nextElementSibling.style.display = ''
                 card.nextElementSibling.style.backgroundColor = 'white'
             }
@@ -93,9 +94,11 @@ function cardBehavior(e){
                 card.style.display = 'none'
             }
             if (card.nextElementSibling === null){
+                cardPic.nextElementSibling.style.animationName = 'none'
                 cardPic.nextElementSibling.style.display = ''
                 cardPic.nextElementSibling.style.backgroundColor = 'white'
             } else {
+                card.nextElementSibling.style.animationName = 'none'
                 card.nextElementSibling.style.display = ''
                 card.nextElementSibling.style.backgroundColor = 'white'
             }
@@ -131,6 +134,9 @@ function matchedCards(card1Id){
     let allCardsArr = grabAllCards()
     let matchedCards = allCardsArr.filter(card => card.dataset.matchId === card1Id)
     matchedCards.forEach(card => {
+        card.style.animationName = 'jello-horizontal'
+        card.style.animationDuration = '.5s'
+        // card.style.animationPlayState = 'paused'
         card.style.backgroundColor = card.dataset.color
         card.dataset.matched = 'true'
     })
@@ -148,6 +154,7 @@ function unmatchedCards(){
             card.style.transform = 'rotateX(0) rotateY(360deg)'
             setTimeout( () => {
                 card.style.display = "none"
+                card.previousElementSibling.style.animationName = 'shake-horizontal'
                 card.previousElementSibling.style.display = ''
                 card.style.pointerEvents = 'auto'
             },50)
@@ -186,6 +193,7 @@ function gameCompleted(array){
 }
 
 function shuffleCards(){
+    renderPopup()
     let allCards = grabAllCards()
     let shuffledCards = shuffle(allCards)
     let pairDivs = Array.from(cardGameCont.children)

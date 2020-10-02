@@ -2,28 +2,6 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <div>
-        <section id="box1" >
-          <div>
-            <img src="/Users/scoutinman/Flatiron/Mod 3 project/Card-Matching-Game/cardGameBackEnd/app/assets/images/Logo Vector.png" alt="App logo, mint leaf">
-            <form id="signup-container">
-            <input
-              type="text"
-              name="name"
-              value=""
-              placeholder="Escriba su nombre(Enter name)"
-              class="input-text"
-            /><br>
-            <input
-              type="submit"
-              name="submit"
-              value="Empieze(Start)!"
-              class="submit"
-              style="font-family:'Montserrat-Medium';"
-            /></form>
-          </div>
-         </section>
-    </div>
     <title>Card Game</title>
     <script defer type="text/javascript" src="index.js"></script>
     <script defer type="text/javascript" src="cardGameLogic.js"></script>
@@ -31,9 +9,28 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-      <section id="box2"class='username-display'></section>
-
-      
+            <div id='login'>
+              <img id='logo' src="../cardGameBackEnd/app/assets/images/logo.png" alt="App logo, mint leaf">
+              <form id="signup-container">
+              <input
+                id='login-form'
+                type="text"
+                name="name"
+                value=""
+                placeholder="Escriba su nombre(Enter name)"
+                class="input-text"
+              />
+              <br>
+              <input
+                id="login-submit"
+                type="submit"
+                name="submit"
+                value="Empieze(Start)!"
+                class="submit"
+                style="font-family:'Montserrat-Medium';"
+              /></form>
+            </div>
+        <section id="box2"class='username-display'></section>
       <div class='buttons' >
         <img id='new-game-button' src="../cardGameFrontEnd/images/new-game-button.png">
         <img id='hint-button' src="../cardGameFrontEnd/images/hint-button.png">
@@ -44,15 +41,15 @@
       </div>
     <div id="container">
         <div id="card-game-container">
-            <div class='test' id="pair-1"></div>
-            <div class='test' id="pair-2"></div>
-            <div class='test' id="pair-3"></div>
-            <div class='test' id="pair-4"></div>
-            <div class='test' id="pair-5"></div>
-            <div class='test' id="pair-6"></div>
-            <div class='test' id="pair-7"></div>
-            <div class='test' id="pair-8"></div>
-            <div class='test' id="pair-9"></div>
+            <div id="pair-1"></div>
+            <div id="pair-2"></div>
+            <div id="pair-3"></div>
+            <div id="pair-4"></div>
+            <div id="pair-5"></div>
+            <div id="pair-6"></div>
+            <div id="pair-7"></div>
+            <div id="pair-8"></div>
+            <div id="pair-9"></div>
         </div>
     </div>    
   </body>

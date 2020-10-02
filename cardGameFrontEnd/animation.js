@@ -7,11 +7,11 @@ function animations() {
     function animateCards() {
         [...cards1].forEach(card => {
             animateCard(card)
-            flipCard(card)
+            // flipCard(card)
         });
         [...cards2].forEach(card => {
             animateCard(card)
-            flipCard(card)
+            // flipCard(card)
         });
         [...cardsDown].forEach(card => {
             animateCard(card)
@@ -48,10 +48,10 @@ function animations() {
         })
     }
 
-    function flipCard(card) {
-        card.addEventListener('click', function() {
-            card.style.transform = 'rotateX(0) rotateY(180deg)'
-            card.style.backfaceVisibility = 'hidden'
-        })
-    }
+    // function flipCard(card) {
+    //     card.addEventListener('click', function() {
+    //         card.style.transform = 'rotateX(0) rotateY(180deg)'
+    //         card.style.backfaceVisibility = 'hidden'
+    //     })
+    // }
 }
