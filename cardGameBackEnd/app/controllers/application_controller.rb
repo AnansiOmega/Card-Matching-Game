@@ -1,2 +1,5 @@
 class ApplicationController < ActionController::Base
-end
+#     def current_user
+#         User.find(cookies.signed[:user_id])
+#       end     
+ end
