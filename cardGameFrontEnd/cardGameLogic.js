@@ -246,6 +246,7 @@ function giveHint(){
             if(card.dataset.matched === 'false'){
                 flipCard(card)
                 setTimeout(() => {
+                    // card.style.animationName = 'none'
                     card.style.display = "none"
                     card.previousElementSibling.style.display = ''
                     card.style.pointerEvents = 'auto'
@@ -261,6 +262,7 @@ function flipBlankCards(){
     let allBlankCards = document.getElementsByClassName('card-down')
     let allBlankCardsArr = Array.from(allBlankCards)
     allBlankCardsArr.forEach(card => {
+        card.style.animationName = 'none'
         card.style.transform += `rotateX(0) rotateY(360deg)`
         card.style.transitionDuration = "300ms"
         setTimeout( () => {
@@ -273,12 +275,14 @@ function toggleCardsUpWhite() {
     [...cards1].forEach(card => {
         card.style.display = ''
         if(card.dataset.matched === 'false'){
+            card.style.animationName = 'none'
         card.style.backgroundColor = 'white'
         }
     });
     [...cards2].forEach(card => {
         card.style.display = ''
         if(card.dataset.matched === 'false'){
+            card.style.animationName = 'none'
         card.style.backgroundColor = 'white'
         }
     });
