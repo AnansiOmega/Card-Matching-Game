@@ -1,10 +1,5 @@
 # BRAINMINT
 # ..freshen up!
-
-# Welcome to Hitch!
-
-## An app designed for truck drivers and brokers 
-### To expedite the delivery process
 ________________________________________________________
 
 ## To install 
