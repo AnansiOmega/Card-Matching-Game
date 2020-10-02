@@ -5,7 +5,7 @@ let clicks = 0
 let moves = 0
 let card1Id = ''
 let card2Id = ''
-let points = 25
+let points = 50
 
 cardGameCont.addEventListener('click', matchHandler)
 cardGameCont.addEventListener('click', cardBehavior)
@@ -39,7 +39,6 @@ function matchHandler(e){
             clicks ++
         } else {
             clicks = 1
-            matched = false
         }
         moves += .5
         points -= .5
@@ -53,10 +52,10 @@ function cardBehavior(e){
         switch (clicks) {
         case 1:
             if (e.target.className === 'card-down'){
-                flipCard(card)
+                flipCard180(card)
             }
             else{
-                flipCard(cardPic)
+                flipCard180(cardPic)
             }
             setTimeout( () => {
             if (cardPic.className === 'card-down'){
@@ -78,14 +77,14 @@ function cardBehavior(e){
             } else {
                 card1Id = card.nextElementSibling.dataset.matchId
             }
-        },50)
+        },100)
             break;
         case 2:
             if (e.target.className === 'card-down'){
-                flipCard(card)
+                flipCard180(card)
             }
             else {
-                flipCard(cardPic)
+                flipCard180(cardPic)
             }
             setTimeout( () => {
             if (cardPic.className === 'card-down'){
@@ -115,7 +114,7 @@ function cardBehavior(e){
                         unmatchedCards()
                 },500)
             }
-        },50)
+        },100)
         break;
     }
 }
@@ -151,13 +150,13 @@ function unmatchedCards(){
     let matchedCards2 = allCardsArr2.filter(card => card.style.display === '' && card.dataset.matched === 'false')
     let matchedCards = matchedCards1.concat(matchedCards2)
         matchedCards.forEach(card => {
-            card.style.transform = 'rotateX(0) rotateY(360deg)'
+            card.style.transform += 'rotateX(0) rotateY(360deg)'
             setTimeout( () => {
                 card.style.display = "none"
                 card.previousElementSibling.style.animationName = 'shake-horizontal'
                 card.previousElementSibling.style.display = ''
                 card.style.pointerEvents = 'auto'
-            },50)
+            },100)
         })
 }
 
@@ -209,7 +208,7 @@ function shuffleCards(){
 
 // Fisher-Yates shuffle (thank you Mike Bostock)
 function shuffle(array) {
-    var m = array.length, t, i;
+    let m = array.length, t, i;
 
     while (m) {
   
@@ -225,7 +224,66 @@ function shuffle(array) {
 
 
 function flipCard(card) {
+    card.style.transform += 'rotateX(0) rotateY(360deg)'
+    card.style.transitionDuration = "300ms"
+}
+function flipCard180(card) {
     card.style.transform = 'rotateX(0) rotateY(180deg)'
+    card.style.transitionDuration = "300ms"
+}
+
+
+const hintBtn = document.getElementById('hint-button')
+hintBtn.addEventListener('click', giveHint)
+
+function giveHint(){
+    points -= 1
+    flipBlankCards()
+    setTimeout(toggleCardsUpWhite,100)
+    setTimeout( () => {
+        let allCards = grabAllCards()
+        allCards.forEach(card => {
+            if(card.dataset.matched === 'false'){
+                flipCard(card)
+                setTimeout(() => {
+                    card.style.display = "none"
+                    card.previousElementSibling.style.display = ''
+                    card.style.pointerEvents = 'auto'
+                },200)
+            }
+        })
+    },1000)
 }
 
 cardCounter()
+
+function flipBlankCards(){
+    let allBlankCards = document.getElementsByClassName('card-down')
+    let allBlankCardsArr = Array.from(allBlankCards)
+    allBlankCardsArr.forEach(card => {
+        card.style.transform += `rotateX(0) rotateY(360deg)`
+        card.style.transitionDuration = "300ms"
+        setTimeout( () => {
+            card.style.transform = `rotateX(0) rotateY(0deg)`
+        },100)
+    })
+}
+
+function toggleCardsUpWhite() {
+    [...cards1].forEach(card => {
+        card.style.display = ''
+        if(card.dataset.matched === 'false'){
+        card.style.backgroundColor = 'white'
+        }
+    });
+    [...cards2].forEach(card => {
+        card.style.display = ''
+        if(card.dataset.matched === 'false'){
+        card.style.backgroundColor = 'white'
+        }
+    });
+    [...cardsDown].forEach(card => {
+        card.style.display = 'none'
+    })
+}
+

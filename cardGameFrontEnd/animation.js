@@ -7,11 +7,11 @@ function animations() {
     function animateCards() {
         [...cards1].forEach(card => {
             animateCard(card)
-            // flipCard(card)
+            
         });
         [...cards2].forEach(card => {
             animateCard(card)
-            // flipCard(card)
+            
         });
         [...cardsDown].forEach(card => {
             animateCard(card)
@@ -47,11 +47,4 @@ function animations() {
         card.style.transform = 'perspective(500px) scale(1.1) rotateX(0) rotateY(0)'
         })
     }
-
-    // function flipCard(card) {
-    //     card.addEventListener('click', function() {
-    //         card.style.transform = 'rotateX(0) rotateY(180deg)'
-    //         card.style.backfaceVisibility = 'hidden'
-    //     })
-    // }
 }
