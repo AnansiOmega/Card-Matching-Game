@@ -20,6 +20,7 @@ function animations() {
         animateCard(newGameButton)
         animateCard(hintBtn)
         animateCard(shuffleBtn)
+        animateCard(playBtn)
     }
 
     function animateCard(card) {
