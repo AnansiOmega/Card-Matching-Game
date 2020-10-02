@@ -3,6 +3,8 @@ const leafPopup = document.querySelector('.leaf-popup')
 const completedGamePopup = document.querySelector('.completed-game')
 const playBtn = document.querySelector('#login-submit')
 
+var audio = new Audio('audio/match.wav');
+
 let clicks = 0
 let moves = 0
 let card1Id = ''
@@ -113,6 +115,7 @@ function cardBehavior(e){
             }
             if (card1Id === card2Id){
                 matchedCards(card1Id)
+                audio.play();
                 renderPopup()
             } else {
                     setTimeout( () => {
