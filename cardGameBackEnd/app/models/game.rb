@@ -24,4 +24,10 @@ class Game < ApplicationRecord
         return GameMatch.all.slice(-9,9)
     end
 
+    def self.high_score
+        user = Game.all.find_by(points: Game.all.map(&:points).compact).user.username
+        game = Game.all.map(&:points).compact.max
+        return {user: user, game: game}
+    end
+
 end
