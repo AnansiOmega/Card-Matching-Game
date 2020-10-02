@@ -50,7 +50,8 @@ function animations() {
 
     function flipCard(card) {
         card.addEventListener('click', function() {
-            card.style.transform = 'rotateX(0) rotateY(180deg)'
+            card.style.transform += 'rotateX(0) rotateY(180deg)'
+            card.style.transitionDuration += "300ms"
             card.style.backfaceVisibility = 'hidden'
         })
     }
