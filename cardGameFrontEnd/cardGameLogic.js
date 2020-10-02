@@ -1,5 +1,6 @@
 const shuffleBtn = document.getElementById('shuffle-btn')
 const leafPopup = document.querySelector('.leaf-popup')
+const completedGamePopup = document.querySelector('.completed-game')
 
 let clicks = 0
 let moves = 0
@@ -7,11 +8,14 @@ let card1Id = ''
 let card2Id = ''
 let points = 50
 
+
 cardGameCont.addEventListener('click', matchHandler)
 cardGameCont.addEventListener('click', cardBehavior)
 cardGameCont.addEventListener('click', cardCounter)
 shuffleBtn.addEventListener('click', shuffleCards)
-
+// shuffleBtn.addEventListener('click', renderCompletedGame)
+newGameButton.addEventListener('click', loadNewGame)
+completedGamePopup.addEventListener('click', loadNewGame)
 
 //leaf.notification
 function renderPopup() {
@@ -167,9 +171,9 @@ function cardCounter(){
         if (points < 0){
             points = 1
         }
-        setTimeout( () => {
-            alert(`You won the video game it only took you ${moves} moves you get ${points} points`)
-        }, 500)
+        // setTimeout( () => {
+        //     alert(`You won the video game it only took you ${moves} moves you get ${points} points`)
+        // }, 500)
         gameCompleted(allCardsArr)
     }
 }
@@ -189,6 +193,36 @@ function gameCompleted(array){
 
     fetch(`http://localhost:3000/games/${game['id']}`, reqObj)
     .then(resp => resp.json())
+    .then(game => {
+        return renderCompletedGame(game)
+    })
+}
+
+function renderCompletedGame(game) {
+    completedGamePopup.style.visibility = 'visible'
+    completedGamePopup.style.animationName = 'slide-in-elliptic-top-fwd'
+    completedGamePopup.innerHTML = `
+    <h1 id='winning-header'>YOU WON!</h1>
+    <div class='inside-completed'>
+        <div id='points'>
+        <div id='points-header'>POINTS</div>
+        <div id='points-number'>${game.points}</div>
+        </div>
+        <div id='moves'>
+        <div id='moves-header'>MOVES</div>
+        <div id='moves-number'>${moves}</div>
+        </div>
+        <div id='new-game-winner'>NEW GAME</div>
+        <div id='load-completed-games'>MY GAMES</div>
+    </div>
+    `
+    setTimeout(colorChange, 200)
+}
+
+function colorChange() {
+    completedGamePopup.style.animationName = 'color-change-5x'
+    completedGamePopup.style.animationDuration = '8s'
+    completedGamePopup.style.animationIterationCount = 'infinite'
 }
 
 function shuffleCards(){

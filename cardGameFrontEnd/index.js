@@ -99,6 +99,7 @@ function loadNewGame(){
 function renderNewGame(newGame){
     placeCards(newGame)
     toggleCardsUp()
+    completedGamePopup.style.visibility = 'hidden'
 }
 
 function placeCards(newGame) {
