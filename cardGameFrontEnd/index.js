@@ -1,7 +1,6 @@
 function signupFormListener() {
     
  const form = document.querySelector('form')
- 
         
     form.addEventListener('submit', function(e){
         e.preventDefault()
@@ -35,13 +34,7 @@ function signupFormListener() {
             form.reset()
         })
     })
-}   
-
-            
-    
-
-
-
+}
 
 // const cardGameCont = document.getElementById('card-game-container')
 

@@ -1,6 +1,7 @@
 const shuffleBtn = document.getElementById('shuffle-btn')
 const leafPopup = document.querySelector('.leaf-popup')
 const completedGamePopup = document.querySelector('.completed-game')
+const playBtn = document.querySelector('#login-submit')
 
 let clicks = 0
 let moves = 0
@@ -139,10 +140,10 @@ function matchedCards(card1Id){
     matchedCards.forEach(card => {
         card.style.animationName = 'jello-horizontal'
         card.style.animationDuration = '.5s'
-        // card.style.animationPlayState = 'paused'
         card.style.backgroundColor = card.dataset.color
         card.dataset.matched = 'true'
     })
+    cardCounter()
 }
 
 function unmatchedCards(){
@@ -289,8 +290,6 @@ function giveHint(){
         })
     },1000)
 }
-
-cardCounter()
 
 function flipBlankCards(){
     let allBlankCards = document.getElementsByClassName('card-down')
