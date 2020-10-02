@@ -16,7 +16,7 @@ function animations() {
         [...cardsDown].forEach(card => {
             animateCard(card)
         });
-        animateCard(completedGamePopup)
+        // animateCard(completedGamePopup)
         animateCard(newGameButton)
         animateCard(hintBtn)
         animateCard(shuffleBtn)

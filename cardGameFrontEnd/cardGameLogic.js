@@ -16,7 +16,7 @@ cardGameCont.addEventListener('click', cardCounter)
 shuffleBtn.addEventListener('click', shuffleCards)
 // shuffleBtn.addEventListener('click', renderCompletedGame)
 newGameButton.addEventListener('click', loadNewGame)
-completedGamePopup.addEventListener('click', loadNewGame)
+// completedGamePopup.addEventListener('click', loadNewGame)
 
 //leaf.notification
 function renderPopup() {
@@ -172,12 +172,10 @@ function cardCounter(){
         if (points < 0){
             points = 1
         }
-        // setTimeout( () => {
-        //     alert(`You won the video game it only took you ${moves} moves you get ${points} points`)
-        // }, 500)
         gameCompleted(allCardsArr)
     }
 }
+cardCounter()
 
 function gameCompleted(array){
     let game = JSON.parse(array[0].dataset.gameId)
@@ -195,6 +193,7 @@ function gameCompleted(array){
     fetch(`http://localhost:3000/games/${game['id']}`, reqObj)
     .then(resp => resp.json())
     .then(game => {
+        renderCompletedGame(game)
         return renderCompletedGame(game)
     })
 }
@@ -214,11 +213,35 @@ function renderCompletedGame(game) {
         <div id='moves-number'>${moves}</div>
         </div>
         <div id='new-game-winner'>NEW GAME</div>
-        <div id='load-completed-games'>MY GAMES</div>
+        <div id='load-completed-games'>High Score</div>
     </div>
     `
     setTimeout(colorChange, 200)
+    let highScoreBtn = document.getElementById('load-completed-games')
+    highScoreBtn.addEventListener('click', getHighScores)
+    const newGameButton = document.getElementById('new-game-winner')
+    newGameButton.addEventListener('click', loadNewGame)
 }
+
+function getHighScores(){
+    fetch('http://localhost:3000/games/highscore')
+    .then(resp => resp.json())
+    .then(user => {
+        completedGamePopup.innerHTML = `
+    <h1 id='winning-header'>${user['user']} holds the highest score!</h1>
+    <div class='inside-completed'>
+        <div id='points'>
+        <div id='points-header'>POINTS</div>
+        <div id='points-number'>${user['game']}</div>
+        </div>
+        <div id='new-game-winner'>NEW GAME</div>
+    </div>
+    `
+    const newGameButton = document.getElementById('new-game-winner')
+    newGameButton.addEventListener('click', loadNewGame)
+    })
+}
+
 
 function colorChange() {
     completedGamePopup.style.animationName = 'color-change-5x'
