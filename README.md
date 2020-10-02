@@ -15,7 +15,7 @@ ________________________________________________________
 5. Cd into cardGameFrontend
 6. Run open index.html
 7. Cd back, and the into cardGameBackend
-8. Run bundle install, rails db:migrate, and lastly rails s
+8. Run bundle install, rails db:migrate, rails db:seed and lastly rails s
 9. Play the Game!
 
 ________________________________________________________
@@ -23,15 +23,15 @@ ________________________________________________________
 ## Getting started 
 **1. Signup with a Username**
 
-![homepage](app/assets/images/screenshot1.png)
+![homepage](cardGameBackEnd/app/assets/images/screenshot1.png)
 
 **2. From here you can should take a good hard look at your cards, and when you're ready press the circled arrows on the top of the screen**
 * **The top three buttons functionalities are, + = New Game, ? = Give you a hint, and the cricled arrows shuffle the cards**
 
-![login](app/assets/images/screenshot2.png)
+![gameplay](cardGameBackEnd/app/assets/images/screenshot2.png)
 
 
-![logo](app/assets/images/screenshot3.png)
+![scoreboard](cardGameBackEnd/app/assets/images/screenshot3.png)
 
 ________________________________________________________
 ### Creators:
