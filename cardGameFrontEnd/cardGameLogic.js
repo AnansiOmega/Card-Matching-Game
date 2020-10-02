@@ -143,6 +143,7 @@ function matchedCards(card1Id){
         card.style.backgroundColor = card.dataset.color
         card.dataset.matched = 'true'
     })
+    cardCounter()
 }
 
 function unmatchedCards(){
@@ -174,7 +175,7 @@ function cardCounter(){
         gameCompleted(allCardsArr)
     }
 }
-cardCounter()
+
 
 function gameCompleted(array){
     let game = JSON.parse(array[0].dataset.gameId)
@@ -192,7 +193,6 @@ function gameCompleted(array){
     fetch(`http://localhost:3000/games/${game['id']}`, reqObj)
     .then(resp => resp.json())
     .then(game => {
-        renderCompletedGame(game)
         return renderCompletedGame(game)
     })
 }
